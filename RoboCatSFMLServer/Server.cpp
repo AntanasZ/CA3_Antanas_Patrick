@@ -54,8 +54,8 @@ namespace
 
 	void CreateRandomMice(int inMouseCount)
 	{
-		Vector3 mouseMin(100.f, 100.f, 0.f);
-		Vector3 mouseMax(1180.f, 620.f, 0.f);
+		Vector3 mouseMin(95.f, 20.f, 0.f);
+		Vector3 mouseMax(1275.f, 20.f, 0.f);
 		GameObjectPtr go;
 
 		//make a mouse somewhere- where will these come from?
