@@ -53,9 +53,9 @@ void InputManager::HandleInput(EInputAction inInputAction, int inKeyCode)
 	case sf::Keyboard::W:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredForwardAmount);
 		break;
-	case sf::Keyboard::S:
+	/*case sf::Keyboard::S:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredBackAmount);
-		break;
+		break;*/
 	case sf::Keyboard::K:
 		UpdateDesireVariableFromKey(inInputAction, mCurrentState.mIsShooting);
 		break;

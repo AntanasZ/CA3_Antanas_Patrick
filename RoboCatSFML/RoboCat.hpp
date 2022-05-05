@@ -45,6 +45,7 @@ private:
 	void	AdjustVelocityByThrust(float inDeltaTime);
 
 	Vector3				mVelocity;
+	Vector3 mVelocityLeftRight;
 
 
 	float				mMaxLinearSpeed;
@@ -64,6 +65,7 @@ protected:
 	float				mLastMoveTimestamp;
 
 	float				mThrustDir;
+	float mThrustLeftRight;
 	int					mHealth;
 
 	bool				mIsShooting;
