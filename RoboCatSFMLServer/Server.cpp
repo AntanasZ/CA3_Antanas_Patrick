@@ -30,6 +30,12 @@ Server::Server()
 		latency = stof(latencyString);
 	}
 	NetworkManagerServer::sInstance->SetSimulatedLatency(latency);
+
+	//sf::Time tick_rate = sf::seconds(1.f / 1.f);
+	sf::Time tick_rate = sf::seconds(5.f);
+	sf::Time tick_time = sf::Time::Zero;
+	sf::Clock tick_clock;
+	sf::Time m_pickup_spawn_countdown;
 }
 
 
@@ -52,18 +58,17 @@ bool Server::InitNetworkManager()
 namespace
 {
 
-	void CreateRandomMice(int inMouseCount)
+	void CreateRandomPickups(int inPickupCount)
 	{
-		Vector3 mouseMin(100.f, 100.f, 0.f);
-		Vector3 mouseMax(1180.f, 620.f, 0.f);
+		Vector3 pickupMin(10.f, 20.f, 0.f);
+		Vector3 pickupMax(1270.f, 20.f, 0.f);
 		GameObjectPtr go;
 
-		//make a mouse somewhere- where will these come from?
-		for (int i = 0; i < inMouseCount; ++i)
+		for (int i = 0; i < inPickupCount; ++i)
 		{
 			go = GameObjectRegistry::sInstance->CreateGameObject('MOUS');
-			Vector3 mouseLocation = RoboMath::GetRandomVector(mouseMin, mouseMax);
-			go->SetLocation(mouseLocation);
+			Vector3 pickupLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
+			go->SetLocation(pickupLocation);
 		}
 	}
 
@@ -74,7 +79,7 @@ namespace
 void Server::SetupWorld()
 {
 	//spawn some random mice
-	CreateRandomMice(10);
+	//CreateRandomMice(10);
 
 	//spawn more random mice!
 	//CreateRandomMice(10);
@@ -82,6 +87,15 @@ void Server::SetupWorld()
 
 void Server::DoFrame()
 {
+	tick_time += tick_clock.getElapsedTime();
+	m_pickup_spawn_countdown += tick_time;
+
+	if (m_pickup_spawn_countdown >= sf::seconds(100000.f))
+	{
+		tick_clock.restart();
+		m_pickup_spawn_countdown = sf::seconds(0.f);
+		CreateRandomPickups(1);
+	}
 	NetworkManagerServer::sInstance->ProcessIncomingPackets();
 
 	NetworkManagerServer::sInstance->CheckForDisconnects();
@@ -91,7 +105,6 @@ void Server::DoFrame()
 	Engine::DoFrame();
 
 	NetworkManagerServer::sInstance->SendOutgoingPackets();
-
 }
 
 void Server::HandleNewClient(ClientProxyPtr inClientProxy)
