@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\zanta\Desktop\College\Year4\Multiplayer\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zanta\Desktop\College\Year4\Multiplayer\SFML-2.5.1\include;E:\DKIT\Multiplayer Distributed Programming\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
@@ -162,7 +162,7 @@
     <ClInclude Include="InputState.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
-    <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="Pickup.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
     <ClInclude Include="NetworkManager.hpp" />
@@ -193,7 +193,7 @@
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
-    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />
     <ClCompile Include="NetworkManager.cpp" />
