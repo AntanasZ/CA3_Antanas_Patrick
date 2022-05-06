@@ -162,7 +162,7 @@
     <ClInclude Include="InputState.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
-    <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="Pickup.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
     <ClInclude Include="NetworkManager.hpp" />
@@ -193,7 +193,7 @@
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
-    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />
     <ClCompile Include="NetworkManager.cpp" />

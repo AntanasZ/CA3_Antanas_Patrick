@@ -1,6 +1,6 @@
 #include "RoboCatPCH.hpp"
 
-Mouse::Mouse() 
+Pickup::Pickup() 
 {
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
@@ -10,14 +10,14 @@ Mouse::Mouse()
 }
 
 
-bool Mouse::HandleCollisionWithCat(RoboCat* inCat)
+bool Pickup::HandleCollisionWithCat(RoboCat* inCat)
 {
 	(void)inCat;
 	return false;
 }
 
 
-uint32_t Mouse::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
@@ -55,7 +55,7 @@ uint32_t Mouse::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 	return writtenState;
 }
 
-void Mouse::Read(InputMemoryBitStream& inInputStream)
+void Pickup::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 
@@ -82,7 +82,7 @@ void Mouse::Read(InputMemoryBitStream& inInputStream)
 	}
 }
 
-void Mouse::Update()
+void Pickup::Update()
 {
 	float deltaTime = Timing::sInstance.GetDeltaTime();
 	SetLocation(GetLocation() + mVelocity * deltaTime);

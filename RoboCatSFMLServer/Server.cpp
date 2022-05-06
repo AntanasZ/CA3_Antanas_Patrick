@@ -17,7 +17,7 @@ Server::Server()
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('MOUS', MouseServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
 
 	InitNetworkManager();
@@ -66,7 +66,7 @@ namespace
 
 		for (int i = 0; i < inPickupCount; ++i)
 		{
-			go = GameObjectRegistry::sInstance->CreateGameObject('MOUS');
+			go = GameObjectRegistry::sInstance->CreateGameObject('PICK');
 			Vector3 pickupLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
 			go->SetLocation(pickupLocation);
 		}

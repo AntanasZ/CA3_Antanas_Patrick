@@ -1,6 +1,6 @@
 #include "RoboCatClientPCH.hpp"
 
-MouseClient::MouseClient()
+PickupClient::PickupClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("mouse"));

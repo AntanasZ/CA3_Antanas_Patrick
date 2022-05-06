@@ -1,17 +1,17 @@
 #include "RoboCatServerPCH.hpp"
 
 
-MouseServer::MouseServer()
+PickupServer::PickupServer()
 {
 }
 
-void MouseServer::HandleDying()
+void PickupServer::HandleDying()
 {
 	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
 
-bool MouseServer::HandleCollisionWithCat(RoboCat* inCat)
+bool PickupServer::HandleCollisionWithCat(RoboCat* inCat)
 {
 	//kill yourself!
 	SetDoesWantToDie(true);
@@ -21,9 +21,9 @@ bool MouseServer::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
-void MouseServer::Update()
+void PickupServer::Update()
 {
-	Mouse::Update();
+	Pickup::Update();
 }
 
 

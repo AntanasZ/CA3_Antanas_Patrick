@@ -1,9 +1,9 @@
-class Mouse : public GameObject
+class Pickup : public GameObject
 {
 public:
-	CLASS_IDENTIFICATION('MOUS', GameObject)
+	CLASS_IDENTIFICATION('PICK', GameObject)
 
-	enum EMouseReplicationState
+	enum EPickupReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,
@@ -11,7 +11,7 @@ public:
 		EMRS_AllState = EMRS_Pose | EMRS_Color
 	};
 
-	static	GameObject* StaticCreate() { return new Mouse(); }
+	static	GameObject* StaticCreate() { return new Pickup(); }
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 
@@ -25,7 +25,7 @@ public:
 	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
 
 protected:
-	Mouse();
+	Pickup();
 
 private:
 	Vector3	mVelocity;
