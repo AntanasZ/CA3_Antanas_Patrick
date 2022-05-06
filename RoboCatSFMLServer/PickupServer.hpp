@@ -8,5 +8,8 @@ public:
 
 protected:
 	PickupServer();
+
+private:
+	float mTimeToDie;
 };
 

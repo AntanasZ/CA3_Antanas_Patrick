@@ -60,8 +60,8 @@ namespace
 
 	void CreateRandomPickups(int inPickupCount)
 	{
-		Vector3 pickupMin(10.f, 20.f, 0.f);
-		Vector3 pickupMax(1270.f, 20.f, 0.f);
+		Vector3 pickupMin(10.f, -20.f, 0.f);
+		Vector3 pickupMax(1270.f, -20.f, 0.f);
 		GameObjectPtr go;
 
 		for (int i = 0; i < inPickupCount; ++i)

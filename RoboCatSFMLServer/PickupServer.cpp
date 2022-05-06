@@ -3,6 +3,8 @@
 
 PickupServer::PickupServer()
 {
+	//pickup lives 4 seconds...
+	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 4.f;
 }
 
 void PickupServer::HandleDying()
@@ -24,6 +26,11 @@ bool PickupServer::HandleCollisionWithCat(RoboCat* inCat)
 void PickupServer::Update()
 {
 	Pickup::Update();
+
+	if (Timing::sInstance.GetFrameStartTime() > mTimeToDie)
+	{
+		SetDoesWantToDie(true);
+	}
 }
 
 
