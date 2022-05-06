@@ -89,12 +89,13 @@ void Yarn::InitFromShooter(RoboCat* inShooter)
 
 void Yarn::Update()
 {
+	//SetVelocity(Vector3(0, 981.f, 0));
 
 	float deltaTime = Timing::sInstance.GetDeltaTime();
 
 	SetLocation(GetLocation() + mVelocity * deltaTime);
 
-
+	
 	//we'll let the cats handle the collisions
 }
 

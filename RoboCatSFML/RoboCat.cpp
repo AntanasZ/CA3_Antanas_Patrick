@@ -56,7 +56,9 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 {
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
-
+	//Add gravity to cat
+	SetVelocity(Vector3(mVelocityLeftRight.mX, 981.f, 0));
+	
 	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 	SetLocation(GetLocation() + mVelocityLeftRight * inDeltaTime);
 
@@ -65,7 +67,7 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 
 void RoboCat::Update()
 {
-
+	
 }
 
 void RoboCat::ProcessCollisions()
