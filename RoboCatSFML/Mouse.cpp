@@ -1,9 +1,12 @@
 #include "RoboCatPCH.hpp"
 
-Mouse::Mouse()
+Mouse::Mouse() 
 {
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
+
+	//Add gravity to pickup
+	SetVelocity(Vector3(0, 250.f, 0));
 }
 
 
@@ -77,6 +80,12 @@ void Mouse::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(color);
 		SetColor(color);
 	}
+}
+
+void Mouse::Update()
+{
+	float deltaTime = Timing::sInstance.GetDeltaTime();
+	SetLocation(GetLocation() + mVelocity * deltaTime);
 }
 
 

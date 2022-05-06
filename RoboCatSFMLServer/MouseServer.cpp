@@ -21,6 +21,12 @@ bool MouseServer::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
+void MouseServer::Update()
+{
+	Mouse::Update();
+}
+
+
 
 
 

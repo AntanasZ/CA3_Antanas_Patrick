@@ -20,7 +20,14 @@ public:
 
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
+	virtual void Update() override;
+
+	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
+
 protected:
 	Mouse();
+
+private:
+	Vector3	mVelocity;
 };
 
