@@ -33,6 +33,7 @@ public:
 
 	void			SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
 	const Vector3& GetVelocity()						const { return mVelocity; }
+	void Accelerate(const Vector3 inVelocity) { mVelocity += inVelocity; }
 
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 
@@ -69,6 +70,7 @@ protected:
 	int					mHealth;
 
 	bool				mIsShooting;
+	bool mIsJumping;
 };
 
 typedef shared_ptr< RoboCat >	RoboCatPtr;
