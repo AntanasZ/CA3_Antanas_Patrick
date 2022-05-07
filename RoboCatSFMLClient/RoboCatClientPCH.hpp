@@ -12,7 +12,7 @@
 
 #include "RoboCatClient.hpp"
 #include "PickupClient.hpp"
-#include "YarnClient.hpp"
+#include "ProjectileClient.hpp"
 
 #include "HUD.hpp"
 
