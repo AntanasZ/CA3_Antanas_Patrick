@@ -11,6 +11,7 @@ TextureManager::TextureManager()
 {
 	CacheTexture("cat", "../Assets/cat.png");
 	CacheTexture("mouse", "../Assets/mouse.png");
+	CacheTexture("tomato", "../Assets/Tomato.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("background", "../Assets/Background.png");
 }
