@@ -35,14 +35,14 @@ void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
 
 	mIsJumping = inInputState.IsJumping();
 
-	if(!mIsJumping)
-	{
+	/*if(!mIsJumping)
+	{*/
 		mThrustDir = inputForwardDelta;
-	}
+	/*}
 	else
 	{
 		mThrustDir = 0.f;
-	}
+	}*/
 
 	mThrustLeftRight = inputLeftRightDelta;
 	
@@ -54,7 +54,7 @@ void RoboCat::AdjustVelocityByThrust(float inDeltaTime)
 {
 	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
 	//simulating acceleration makes the client prediction a bit more complex
-	Vector3 forwardVector(0, -sqrtf(2.0f * 30 * 20), 0); //= GetForwardVector();
+	Vector3 forwardVector(0, -sqrtf(2.0f * 30 * 2), 0); //= GetForwardVector();
 	mVelocity = forwardVector * (mThrustDir  * inDeltaTime * mMaxLinearSpeed);
 
 	Vector3 leftRightVector(1, 0, 0);
