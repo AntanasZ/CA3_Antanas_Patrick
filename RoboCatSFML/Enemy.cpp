@@ -5,7 +5,7 @@ Enemy::Enemy()
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
 
-	//Add gravity to pickup
+	//Add velocity to enemy
 	SetVelocity(Vector3(250.f, 0.f, 0));
 }
 

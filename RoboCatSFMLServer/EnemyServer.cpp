@@ -3,8 +3,8 @@
 
 EnemyServer::EnemyServer()
 {
-	//pickup lives 4 seconds...
-	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 4.f;
+	//enemy lives 4 seconds...
+	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
 }
 
 void EnemyServer::HandleDying()
@@ -16,9 +16,9 @@ void EnemyServer::HandleDying()
 bool EnemyServer::HandleCollisionWithCat(RoboCat* inCat)
 {
 	//kill yourself!
-	SetDoesWantToDie(true);
+	//SetDoesWantToDie(true);
 
-	ScoreBoardManager::sInstance->IncScore(inCat->GetPlayerId(), 1);
+	//ScoreBoardManager::sInstance->IncScore(inCat->GetPlayerId(), 1);
 
 	return false;
 }

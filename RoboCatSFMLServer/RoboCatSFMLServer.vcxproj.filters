@@ -42,6 +42,9 @@
     <ClInclude Include="ProjectileServer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClientProxy.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProjectileServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

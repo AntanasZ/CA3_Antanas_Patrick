@@ -19,7 +19,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', ProjectileServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
 
 	InitNetworkManager();
 
@@ -37,11 +37,14 @@ Server::Server()
 	sf::Time tick_time = sf::Time::Zero;
 	sf::Clock tick_clock;
 	sf::Time m_pickup_spawn_countdown;
+	sf::Time m_enemy_spawn_countdown;
 }
 
 
 int Server::Run()
 {
+	srand(time(NULL));
+
 	SetupWorld();
 
 	return Engine::Run();
@@ -73,7 +76,32 @@ namespace
 		}
 	}
 
+	void CreateRandomEnemy()
+	{
+		sf::Int8 randomEnemy;
+		sf::Int8 randomPosition;
+		Vector3 enemyLocation;
+		Vector3 enemyVelocity;
+		GameObjectPtr go;
 
+		randomEnemy = rand() % 12;
+		randomPosition = rand() % 2 + 1;
+
+		if(randomPosition == 1)
+		{
+			enemyLocation = Vector3(10, 685, 0);
+			//enemyVelocity = Vector3(250.f, 0.f, 0);
+		}
+		else
+		{
+			enemyLocation = Vector3(1270, 685, 0);
+			//enemyVelocity = Vector3(-250.f, 0.f, 0);
+		}
+
+		go = GameObjectRegistry::sInstance->CreateGameObject('ENEM');
+		go->SetLocation(enemyLocation);
+		//go->SetVelocity(enemyVelocity);
+	}
 }
 
 
@@ -90,6 +118,7 @@ void Server::DoFrame()
 {
 	tick_time += tick_clock.getElapsedTime();
 	m_pickup_spawn_countdown += tick_time;
+	m_enemy_spawn_countdown += tick_time;
 
 	if (m_pickup_spawn_countdown >= sf::seconds(100000.f))
 	{
@@ -97,6 +126,14 @@ void Server::DoFrame()
 		m_pickup_spawn_countdown = sf::seconds(0.f);
 		CreateRandomPickups(1);
 	}
+	
+	if (m_enemy_spawn_countdown >= sf::seconds(500000.f))
+	{
+		tick_clock.restart();
+		m_enemy_spawn_countdown = sf::seconds(0.f);
+		CreateRandomEnemy();
+	}
+
 	NetworkManagerServer::sInstance->ProcessIncomingPackets();
 
 	NetworkManagerServer::sInstance->CheckForDisconnects();

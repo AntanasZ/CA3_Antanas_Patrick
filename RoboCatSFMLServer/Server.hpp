@@ -24,5 +24,6 @@ private:
 	sf::Time tick_time;
 	sf::Clock tick_clock;
 	sf::Time m_pickup_spawn_countdown;
+	sf::Time m_enemy_spawn_countdown;
 };
 

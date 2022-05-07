@@ -1,10 +1,9 @@
-#pragma once
 class Enemy : public GameObject
 {
 public:
 	CLASS_IDENTIFICATION('ENEM', GameObject)
 
-		enum EPickupReplicationState
+	enum EEnemyReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,
