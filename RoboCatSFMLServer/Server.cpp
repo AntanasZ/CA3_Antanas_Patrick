@@ -19,6 +19,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', ProjectileServer::StaticCreate);
 
 	InitNetworkManager();
 

@@ -1,19 +1,19 @@
 #include "RoboCatServerPCH.hpp"
 
 
-PickupServer::PickupServer()
+EnemyServer::EnemyServer()
 {
 	//pickup lives 4 seconds...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 4.f;
 }
 
-void PickupServer::HandleDying()
+void EnemyServer::HandleDying()
 {
 	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
 
-bool PickupServer::HandleCollisionWithCat(RoboCat* inCat)
+bool EnemyServer::HandleCollisionWithCat(RoboCat* inCat)
 {
 	//kill yourself!
 	SetDoesWantToDie(true);
@@ -23,9 +23,9 @@ bool PickupServer::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
-void PickupServer::Update()
+void EnemyServer::Update()
 {
-	Pickup::Update();
+	Enemy::Update();
 
 	if (Timing::sInstance.GetFrameStartTime() > mTimeToDie)
 	{

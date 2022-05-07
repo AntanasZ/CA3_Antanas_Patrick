@@ -84,6 +84,7 @@ class GameObject;
 #include "Timing.hpp"
 #include "Pickup.hpp"
 #include "Projectile.hpp"
+#include "Enemy.hpp"
 #include "StringUtils.hpp"
 #include "ScoreBoardManager.hpp"
 

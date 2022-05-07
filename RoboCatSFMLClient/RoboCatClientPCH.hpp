@@ -13,6 +13,7 @@
 #include "RoboCatClient.hpp"
 #include "PickupClient.hpp"
 #include "ProjectileClient.hpp"
+#include "EnemyClient.hpp"
 
 #include "HUD.hpp"
 
