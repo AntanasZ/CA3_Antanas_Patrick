@@ -68,8 +68,9 @@ void RenderManager::Render()
 	//
 	WindowManager::sInstance->clear(sf::Color(100, 149, 237, 255));
 
+	WindowManager::sInstance->draw(sf::Sprite(*TextureManager::sInstance->GetTexture("background")));
 	RenderManager::sInstance->RenderComponents();
-
+	
 	HUD::sInstance->Render();
 
 	//
