@@ -15,6 +15,7 @@ RoboCat::RoboCat() :
 	mThrustLeftRight(0.f),
 	mPlayerId(0),
 	mIsShooting(false),
+	mIsJumping(false),
 	mHealth(10)
 {
 	SetCollisionRadius(60.f);
@@ -32,7 +33,16 @@ void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
 	float inputForwardDelta = inInputState.GetDesiredVerticalDelta();
 	float inputLeftRightDelta = inInputState.GetDesiredHorizontalDelta();
 
-	mThrustDir = inputForwardDelta;
+	mIsJumping = inInputState.IsJumping();
+
+	if(!mIsJumping)
+	{
+		mThrustDir = inputForwardDelta;
+	}
+	else
+	{
+		mThrustDir = 0.f;
+	}
 
 	mThrustLeftRight = inputLeftRightDelta;
 	
@@ -44,7 +54,7 @@ void RoboCat::AdjustVelocityByThrust(float inDeltaTime)
 {
 	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
 	//simulating acceleration makes the client prediction a bit more complex
-	Vector3 forwardVector(0, -1, 0); //= GetForwardVector();
+	Vector3 forwardVector(0, -sqrtf(2.0f * 30 * 20), 0); //= GetForwardVector();
 	mVelocity = forwardVector * (mThrustDir  * inDeltaTime * mMaxLinearSpeed);
 
 	Vector3 leftRightVector(1, 0, 0);
@@ -57,10 +67,15 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
 	//Add gravity to cat
-	SetVelocity(Vector3(mVelocityLeftRight.mX, 981.f, 0));
-	
+	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
+	SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
+
+	Accelerate(Vector3(0, 981.f, 0));
+
 	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 	SetLocation(GetLocation() + mVelocityLeftRight * inDeltaTime);
+
+	//SetVelocity(Vector3(mVelocityLeftRight.mX, 981.f * inDeltaTime, 0));
 
 	ProcessCollisions();
 }
