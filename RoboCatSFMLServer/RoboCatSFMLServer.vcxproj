@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ClientProxy.hpp" />
+    <ClInclude Include="EnemyServer.hpp" />
     <ClInclude Include="PickupServer.hpp" />
     <ClInclude Include="NetworkManagerServer.hpp" />
     <ClInclude Include="ReplicationManagerServer.hpp" />
@@ -164,10 +165,11 @@
     <ClInclude Include="RoboCatServer.hpp" />
     <ClInclude Include="RoboCatServerPCH.hpp" />
     <ClInclude Include="Server.hpp" />
-    <ClInclude Include="YarnServer.hpp" />
+    <ClInclude Include="ProjectileServer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClientProxy.cpp" />
+    <ClCompile Include="EnemyServer.cpp" />
     <ClCompile Include="PickupServer.cpp" />
     <ClCompile Include="NetworkManagerServer.cpp" />
     <ClCompile Include="ReplicationManagerServer.cpp" />
@@ -181,7 +183,7 @@
     </ClCompile>
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="ServerMain.cpp" />
-    <ClCompile Include="YarnServer.cpp" />
+    <ClCompile Include="ProjectileServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoboCatSFML\RoboCatSFML.vcxproj">

@@ -1,6 +1,6 @@
 #include "RoboCatPCH.hpp"
 
-Yarn::Yarn() :
+Projectile::Projectile() :
 	mMuzzleSpeed(300.f),
 	mVelocity(Vector3::Zero),
 	mPlayerId(0)
@@ -11,7 +11,7 @@ Yarn::Yarn() :
 
 
 
-uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Projectile::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
@@ -66,7 +66,7 @@ uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 
 
 
-bool Yarn::HandleCollisionWithCat(RoboCat* inCat)
+bool Projectile::HandleCollisionWithCat(RoboCat* inCat)
 {
 	(void)inCat;
 
@@ -75,7 +75,7 @@ bool Yarn::HandleCollisionWithCat(RoboCat* inCat)
 }
 
 
-void Yarn::InitFromShooter(RoboCat* inShooter)
+void Projectile::InitFromShooter(RoboCat* inShooter)
 {
 	SetColor(inShooter->GetColor());
 	SetPlayerId(inShooter->GetPlayerId());
@@ -87,7 +87,7 @@ void Yarn::InitFromShooter(RoboCat* inShooter)
 	SetRotation(inShooter->GetRotation());
 }
 
-void Yarn::Update()
+void Projectile::Update()
 {
 	//SetVelocity(Vector3(0, 981.f, 0));
 

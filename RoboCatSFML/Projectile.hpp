@@ -1,10 +1,10 @@
-class Yarn : public GameObject
+class Projectile : public GameObject
 {
 public:
 
-	CLASS_IDENTIFICATION('YARN', GameObject)
+	CLASS_IDENTIFICATION('PROJ', GameObject)
 
-		enum EYarnReplicationState
+		enum EProjectileReplicationState
 	{
 		EYRS_Pose = 1 << 0,
 		EYRS_Color = 1 << 1,
@@ -13,7 +13,7 @@ public:
 		EYRS_AllState = EYRS_Pose | EYRS_Color | EYRS_PlayerId
 	};
 
-	static	GameObject* StaticCreate() { return new Yarn(); }
+	static	GameObject* StaticCreate() { return new Projectile(); }
 
 	virtual uint32_t	GetAllStateMask()	const override { return EYRS_AllState; }
 
@@ -32,12 +32,12 @@ public:
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
 protected:
-	Yarn();
+	Projectile();
 	Vector3		mVelocity;
 	float		mMuzzleSpeed;
 	int			mPlayerId;
 
 };
 
-typedef shared_ptr< Yarn >	YarnPtr;
+typedef shared_ptr< Projectile >	ProjectilePtr;
 

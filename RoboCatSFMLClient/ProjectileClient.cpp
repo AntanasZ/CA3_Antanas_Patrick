@@ -1,14 +1,14 @@
 #include "RoboCatClientPCH.hpp"
 
 
-YarnClient::YarnClient()
+ProjectileClient::ProjectileClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("tomato"));
 }
 
 
-void YarnClient::Read(InputMemoryBitStream& inInputStream)
+void ProjectileClient::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 

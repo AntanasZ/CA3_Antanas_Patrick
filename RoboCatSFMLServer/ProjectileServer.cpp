@@ -1,21 +1,21 @@
 #include "RoboCatServerPCH.hpp"
 
 
-YarnServer::YarnServer()
+ProjectileServer::ProjectileServer()
 {
-	//yarn lives a second...
+	//projectile lives a second...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 1.f;
 }
 
-void YarnServer::HandleDying()
+void ProjectileServer::HandleDying()
 {
 	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
 
-void YarnServer::Update()
+void ProjectileServer::Update()
 {
-	Yarn::Update();
+	Projectile::Update();
 
 	if (Timing::sInstance.GetFrameStartTime() > mTimeToDie)
 	{
@@ -24,7 +24,7 @@ void YarnServer::Update()
 
 }
 
-bool YarnServer::HandleCollisionWithCat(RoboCat* inCat)
+bool ProjectileServer::HandleCollisionWithCat(RoboCat* inCat)
 {
 	if (inCat->GetPlayerId() != GetPlayerId())
 	{

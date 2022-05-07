@@ -32,10 +32,3 @@ void PickupServer::Update()
 		SetDoesWantToDie(true);
 	}
 }
-
-
-
-
-
-
-

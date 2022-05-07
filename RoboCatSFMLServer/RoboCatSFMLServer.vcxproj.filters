@@ -33,13 +33,16 @@
     <ClInclude Include="Server.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="YarnServer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ReplicationManagerTransmissionData.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PickupServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyServer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,9 +65,6 @@
     <ClCompile Include="Server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="YarnServer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ServerMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,6 +72,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PickupServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
