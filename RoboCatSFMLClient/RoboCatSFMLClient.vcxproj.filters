@@ -63,6 +63,9 @@
     <ClInclude Include="EnemyClient.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlatformClient.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -114,6 +117,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemyClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

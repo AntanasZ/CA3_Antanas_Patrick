@@ -25,6 +25,7 @@ Client::Client()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformClient::StaticCreate);
 
 	string destination = StringUtils::GetCommandLineArg(1);
 	string name = StringUtils::GetCommandLineArg(2);

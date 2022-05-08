@@ -14,6 +14,7 @@
 #include "PickupClient.hpp"
 #include "ProjectileClient.hpp"
 #include "EnemyClient.hpp"
+#include "PlatformClient.hpp"
 
 #include "HUD.hpp"
 
