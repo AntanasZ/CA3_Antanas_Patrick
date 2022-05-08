@@ -14,6 +14,7 @@ TextureManager::TextureManager()
 	CacheTexture("tomato", "../Assets/Tomato.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("background", "../Assets/Background.png");
+	CacheTexture("platform", "../Assets/Platform.png");
 }
 
 TexturePtr	TextureManager::GetTexture(const string& inTextureName)
