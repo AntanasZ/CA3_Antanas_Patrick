@@ -23,6 +23,7 @@ public:
 	virtual void Update() override;
 
 	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
+	const Vector3& GetVelocity() const { return mVelocity; }
 
 protected:
 	Enemy();
@@ -30,4 +31,7 @@ protected:
 private:
 	Vector3	mVelocity;
 };
+
+typedef shared_ptr< Enemy >	EnemyPtr;
+
 

@@ -5,8 +5,8 @@ Enemy::Enemy()
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
 
-	//Add velocity to enemy
-	SetVelocity(Vector3(250.f, 0.f, 0));
+	//Add initial velocity to enemy
+	SetVelocity(Vector3(0.f, 0.f, 0));
 }
 
 
@@ -28,6 +28,10 @@ uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 		Vector3 location = GetLocation();
 		inOutputStream.Write(location.mX);
 		inOutputStream.Write(location.mY);
+
+		Vector3 velocity = GetVelocity();
+		inOutputStream.Write(velocity.mX);
+		inOutputStream.Write(velocity.mY);
 
 		inOutputStream.Write(GetRotation());
 
@@ -66,6 +70,11 @@ void Enemy::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(location.mX);
 		inInputStream.Read(location.mY);
 		SetLocation(location);
+
+		Vector3 velocity;
+		inInputStream.Read(velocity.mX);
+		inInputStream.Read(velocity.mY);
+		SetVelocity(velocity);
 
 		float rotation;
 		inInputStream.Read(rotation);

@@ -91,17 +91,19 @@ namespace
 		if(randomPosition == 1)
 		{
 			enemyLocation = Vector3(10, 685, 0);
-			//enemyVelocity = Vector3(250.f, 0.f, 0);
+			enemyVelocity = Vector3(250.f, 0.f, 0);
 		}
 		else
 		{
 			enemyLocation = Vector3(1270, 685, 0);
-			//enemyVelocity = Vector3(-250.f, 0.f, 0);
+			enemyVelocity = Vector3(-250.f, 0.f, 0);
 		}
 
-		go = GameObjectRegistry::sInstance->CreateGameObject('ENEM');
-		go->SetLocation(enemyLocation);
-		//go->SetVelocity(enemyVelocity);
+		//go = GameObjectRegistry::sInstance->CreateGameObject('ENEM');
+		EnemyPtr enemy = std::static_pointer_cast<Enemy>(GameObjectRegistry::sInstance->CreateGameObject('ENEM'));
+
+		enemy->SetLocation(enemyLocation);
+		enemy->SetVelocity(enemyVelocity);
 	}
 }
 
