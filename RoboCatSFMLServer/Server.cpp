@@ -20,6 +20,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformServer::StaticCreate);
 
 	InitNetworkManager();
 
@@ -107,6 +108,17 @@ namespace
 
 void Server::SetupWorld()
 {
+	GameObjectPtr platform1 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	GameObjectPtr platform2 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	GameObjectPtr platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+
+	//platform1 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	//platform2 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	//platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+
+	platform1->SetLocation(Vector3(500.f, 500.f, 0));
+	platform2->SetLocation(Vector3(800.f, 750.f, 0));
+	platform3->SetLocation(Vector3(200.f, 750.f, 0));
 	//spawn some random mice
 	//CreateRandomMice(10);
 

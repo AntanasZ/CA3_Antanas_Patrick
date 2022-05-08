@@ -26,6 +26,7 @@
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="PickupClient.hpp" />
     <ClInclude Include="NetworkManagerClient.hpp" />
+    <ClInclude Include="PlatformClient.hpp" />
     <ClInclude Include="PlayerSpriteComponent.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="ReplicationManagerClient.hpp" />
@@ -45,6 +46,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="PickupClient.cpp" />
     <ClCompile Include="NetworkManagerClient.cpp" />
+    <ClCompile Include="PlatformClient.cpp" />
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="ReplicationManagerClient.cpp" />

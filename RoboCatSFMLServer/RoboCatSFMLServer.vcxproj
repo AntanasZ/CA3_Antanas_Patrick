@@ -160,6 +160,7 @@
     <ClInclude Include="EnemyServer.hpp" />
     <ClInclude Include="PickupServer.hpp" />
     <ClInclude Include="NetworkManagerServer.hpp" />
+    <ClInclude Include="PlatformServer.hpp" />
     <ClInclude Include="ReplicationManagerServer.hpp" />
     <ClInclude Include="ReplicationManagerTransmissionData.hpp" />
     <ClInclude Include="RoboCatServer.hpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="EnemyServer.cpp" />
     <ClCompile Include="PickupServer.cpp" />
     <ClCompile Include="NetworkManagerServer.cpp" />
+    <ClCompile Include="PlatformServer.cpp" />
     <ClCompile Include="ReplicationManagerServer.cpp" />
     <ClCompile Include="ReplicationManagerTransmissionData.cpp" />
     <ClCompile Include="RoboCatServer.cpp" />
