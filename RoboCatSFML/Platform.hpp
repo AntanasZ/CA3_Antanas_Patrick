@@ -7,6 +7,6 @@ public:
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
 protected:
-	Platform() = default;
+	Platform();
 };
 
