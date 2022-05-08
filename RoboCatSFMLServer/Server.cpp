@@ -20,6 +20,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformServer::StaticCreate);
 
 	InitNetworkManager();
 

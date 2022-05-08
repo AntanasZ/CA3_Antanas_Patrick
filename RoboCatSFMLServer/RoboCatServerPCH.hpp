@@ -11,4 +11,5 @@
 #include "PickupServer.hpp"
 #include "ProjectileServer.hpp"
 #include "EnemyServer.hpp"
+#include "PlatformServer.hpp"
 
