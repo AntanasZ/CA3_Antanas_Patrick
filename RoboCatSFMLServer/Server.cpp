@@ -79,13 +79,11 @@ namespace
 
 	void CreateRandomEnemy()
 	{
-		sf::Int8 randomEnemy;
 		sf::Int8 randomPosition;
 		Vector3 enemyLocation;
 		Vector3 enemyVelocity;
 		GameObjectPtr go;
 
-		randomEnemy = rand() % 12;
 		randomPosition = rand() % 2 + 1;
 
 		if(randomPosition == 1)
