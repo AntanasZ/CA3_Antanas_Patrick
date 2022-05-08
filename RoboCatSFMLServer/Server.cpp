@@ -116,9 +116,9 @@ void Server::SetupWorld()
 	//platform2 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 	//platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 
-	platform1->SetLocation(Vector3(500.f, 500.f, 0));
-	platform2->SetLocation(Vector3(800.f, 750.f, 0));
-	platform3->SetLocation(Vector3(200.f, 750.f, 0));
+	platform1->SetLocation(Vector3(980.f, 500.f, 0));
+	platform2->SetLocation(Vector3(300.f, 500.f, 0));
+	platform3->SetLocation(Vector3(640.f, 300.f, 0));
 	//spawn some random mice
 	//CreateRandomMice(10);
 
