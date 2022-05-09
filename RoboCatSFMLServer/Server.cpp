@@ -65,8 +65,8 @@ namespace
 
 	void CreateRandomPickup()
 	{
-		Vector3 pickupMin(0.f, 0.f, 0.f);
-		Vector3 pickupMax(0.f, 720.f, 0.f);
+		Vector3 pickupMin(0.f, 20.f, 0.f);
+		Vector3 pickupMax(0.f, 700.f, 0.f);
 		Vector3 pickupVelocity;
 		sf::Int8 randomPosition;
 		GameObjectPtr go;

@@ -3,7 +3,7 @@
 Pickup::Pickup() 
 {
 	SetScale(GetScale() * 0.5f);
-	SetCollisionRadius(20.f);
+	SetCollisionRadius(30.f);
 
 	//Add gravity to pickup
 	//SetVelocity(Vector3(0, 250.f, 0));
