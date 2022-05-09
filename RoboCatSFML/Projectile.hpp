@@ -25,11 +25,11 @@ public:
 	void		SetPlayerId(int inPlayerId) { mPlayerId = inPlayerId; }
 	int			GetPlayerId() const { return mPlayerId; }
 
-	void		InitFromShooter(RoboCat* inShooter);
+	void		InitFromShooter(Player* inShooter);
 
 	virtual void Update() override;
 
-	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
+	virtual bool HandleCollisionWithPlayer(Player* inPlayer) override;
 
 protected:
 	Projectile();

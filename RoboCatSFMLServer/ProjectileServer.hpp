@@ -4,7 +4,7 @@ public:
 	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new ProjectileServer()); }
 	void HandleDying() override;
 
-	virtual bool		HandleCollisionWithCat(RoboCat* inCat) override;
+	virtual bool		HandleCollisionWithPlayer(Player* inPlayer) override;
 
 	virtual void Update() override;
 

@@ -12,7 +12,7 @@ public:
 	};
 
 	static GameObject* StaticCreate() { return new Platform(); }
-	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
+	virtual bool HandleCollisionWithPlayer(Player* inPlayer) override;
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 

@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-	SetScale(GetScale() * 1.5f);
+	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
 
 	//Add initial velocity to enemy
@@ -10,9 +10,9 @@ Enemy::Enemy()
 }
 
 
-bool Enemy::HandleCollisionWithCat(RoboCat* inCat)
+bool Enemy::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 	return false;
 }
 

@@ -10,7 +10,7 @@
 #include "RenderManager.hpp"
 #include "WindowManager.hpp"
 
-#include "RoboCatClient.hpp"
+#include "PlayerClient.hpp"
 #include "PickupClient.hpp"
 #include "ProjectileClient.hpp"
 #include "EnemyClient.hpp"

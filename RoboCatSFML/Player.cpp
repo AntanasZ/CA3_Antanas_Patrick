@@ -3,14 +3,14 @@
 const float WORLD_HEIGHT = 692.f;
 const float WORLD_WIDTH = 1280.f;
 
-RoboCat::RoboCat() :
+Player::Player() :
 	GameObject(),
 	mMaxRotationSpeed(100.f),
 	mMaxLinearSpeed(5000.f),
 	mVelocity(Vector3::Zero),
 	mVelocityLeftRight(Vector3::Zero),
 	mWallRestitution(0.1f),
-	mCatRestitution(0.1f),
+	mPlayerRestitution(0.1f),
 	mThrustDir(0.f),
 	mThrustLeftRight(0.f),
 	mPlayerId(0),
@@ -18,10 +18,10 @@ RoboCat::RoboCat() :
 	mIsJumping(false),
 	mHealth(10)
 {
-	SetCollisionRadius(60.f);
+	SetCollisionRadius(50.f);
 }
 
-void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
+void Player::ProcessInput(float inDeltaTime, const InputState& inInputState)
 {
 	//process our input....
 
@@ -50,7 +50,7 @@ void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
 
 }
 
-void RoboCat::AdjustVelocityByThrust(float inDeltaTime)
+void Player::AdjustVelocityByThrust(float inDeltaTime)
 {
 	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
 	//simulating acceleration makes the client prediction a bit more complex
@@ -62,11 +62,11 @@ void RoboCat::AdjustVelocityByThrust(float inDeltaTime)
 
 }
 
-void RoboCat::SimulateMovement(float inDeltaTime)
+void Player::SimulateMovement(float inDeltaTime)
 {
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
-	//Add gravity to cat
+	//Add gravity to player
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 	SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 
@@ -80,12 +80,12 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 	ProcessCollisions();
 }
 
-void RoboCat::Update()
+void Player::Update()
 {
 	
 }
 
-void RoboCat::ProcessCollisions()
+void Player::ProcessCollisions()
 {
 	//right now just bounce off the sides..
 	ProcessCollisionsWithScreenWalls();
@@ -112,26 +112,26 @@ void RoboCat::ProcessCollisions()
 			float collisionDist = (sourceRadius + targetRadius);
 			if (distSq < (collisionDist * collisionDist))
 			{
-				//first, tell the other guy there was a collision with a cat, so it can do something...
+				//first, tell the other guy there was a collision with a player, so it can do something...
 
-				if (target->HandleCollisionWithCat(this))
+				if (target->HandleCollisionWithPlayer(this))
 				{
 					//okay, you hit something!
 					//so, project your location far enough that you're not colliding
 					Vector3 dirToTarget = delta;
 					dirToTarget.Normalize2D();
 					Vector3 acceptableDeltaFromSourceToTarget = dirToTarget * collisionDist;
-					//important note- we only move this cat. the other cat can take care of moving itself
+					//important note- we only move this player. the other player can take care of moving itself
 					SetLocation(targetLocation - acceptableDeltaFromSourceToTarget);
 
 
 					Vector3 relVel = mVelocity;
 
-					//if other object is a cat, it might have velocity, so there might be relative velocity...
-					RoboCat* targetCat = target->GetAsCat();
-					if (targetCat)
+					//if other object is a player, it might have velocity, so there might be relative velocity...
+					Player* targetPlayer = target->GetAsPlayer();
+					if (targetPlayer)
 					{
-						relVel -= targetCat->mVelocity;
+						relVel -= targetPlayer->mVelocity;
 					}
 
 					//got vel with dir between objects to figure out if they're moving towards each other
@@ -142,10 +142,10 @@ void RoboCat::ProcessCollisions()
 					{
 						Vector3 impulse = relVelDotDir * dirToTarget;
 
-						if (targetCat)
+						if (targetPlayer)
 						{
 							mVelocity -= impulse;
-							mVelocity *= mCatRestitution;
+							mVelocity *= mPlayerRestitution;
 						}
 						else
 						{
@@ -161,7 +161,7 @@ void RoboCat::ProcessCollisions()
 
 }
 
-void RoboCat::ProcessCollisionsWithScreenWalls()
+void Player::ProcessCollisionsWithScreenWalls()
 {
 	Vector3 location = GetLocation();
 	float x = location.mX;
@@ -172,7 +172,7 @@ void RoboCat::ProcessCollisionsWithScreenWalls()
 
 	float radius = GetCollisionRadius();
 
-	//if the cat collides against a wall, the quick solution is to push it off
+	//if the player collides against a wall, the quick solution is to push it off
 	if ((y + radius) >= WORLD_HEIGHT && vy > 0)
 	{
 		mVelocity.mY = -vy * mWallRestitution;
@@ -200,7 +200,7 @@ void RoboCat::ProcessCollisionsWithScreenWalls()
 	}
 }
 
-uint32_t RoboCat::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Player::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 

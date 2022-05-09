@@ -5,9 +5,9 @@ Platform::Platform()
 	
 }
 
-bool Platform::HandleCollisionWithCat(RoboCat* inCat)
+bool Platform::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 	return false;
 }
 

@@ -7,9 +7,9 @@ Pickup::Pickup()
 }
 
 
-bool Pickup::HandleCollisionWithCat(RoboCat* inCat)
+bool Pickup::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 	return false;
 }
 

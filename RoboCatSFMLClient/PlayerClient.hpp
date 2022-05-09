@@ -1,18 +1,18 @@
-class RoboCatClient : public RoboCat
+class PlayerClient : public Player
 {
 public:
-	static	GameObjectPtr	StaticCreate() { return GameObjectPtr(new RoboCatClient()); }
+	static	GameObjectPtr	StaticCreate() { return GameObjectPtr(new PlayerClient()); }
 
 	virtual void Update();
 	virtual void	HandleDying() override;
 
 	virtual void	Read(InputMemoryBitStream& inInputStream) override;
 
-	void DoClientSidePredictionAfterReplicationForLocalCat(uint32_t inReadState);
-	void DoClientSidePredictionAfterReplicationForRemoteCat(uint32_t inReadState);
+	void DoClientSidePredictionAfterReplicationForLocalPlayer(uint32_t inReadState);
+	void DoClientSidePredictionAfterReplicationForRemotePlayer(uint32_t inReadState);
 
 protected:
-	RoboCatClient();
+	PlayerClient();
 
 
 private:

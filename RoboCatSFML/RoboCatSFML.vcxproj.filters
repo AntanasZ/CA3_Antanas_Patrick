@@ -51,9 +51,6 @@
     <ClInclude Include="ReplicationCommand.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RoboCat.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreBoardManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -120,6 +117,9 @@
     <ClInclude Include="Rock.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -144,9 +144,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MoveList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoboCat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScoreBoardManager.cpp">
@@ -204,6 +201,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Rock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

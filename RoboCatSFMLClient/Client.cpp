@@ -21,7 +21,7 @@ bool Client::StaticInit()
 
 Client::Client()
 {
-	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyClient::StaticCreate);

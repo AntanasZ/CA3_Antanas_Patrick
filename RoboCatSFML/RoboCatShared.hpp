@@ -46,7 +46,7 @@ using std::unordered_map;
 using std::string;
 using std::unordered_set;
 
-class RoboCat;
+class Player;
 class GameObject;
 
 #include "SFML\System.hpp"
@@ -79,7 +79,7 @@ class GameObject;
 
 #include "GameObject.hpp"
 #include "GameObjectRegistry.hpp"
-#include "RoboCat.hpp"
+#include "Player.hpp"
 #include "World.hpp"
 #include "Timing.hpp"
 #include "Pickup.hpp"

@@ -7,7 +7,7 @@
 #include "NetworkManagerServer.hpp"
 #include "Server.hpp"
 
-#include "RoboCatServer.hpp"
+#include "PlayerServer.hpp"
 #include "PickupServer.hpp"
 #include "ProjectileServer.hpp"
 #include "EnemyServer.hpp"
