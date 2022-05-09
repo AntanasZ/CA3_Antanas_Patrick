@@ -146,13 +146,13 @@ void Server::DoFrame()
 	tick_time += tick_clock.getElapsedTime();
 	m_pickup_spawn_countdown += tick_time;
 	m_enemy_spawn_countdown += tick_time;
+	m_rock_spawn_countdown += tick_time;
 
 	if (m_pickup_spawn_countdown >= sf::seconds(100000.f))
 	{
 		tick_clock.restart();
 		m_pickup_spawn_countdown = sf::seconds(0.f);
 		CreateRandomPickups(1);
-		CreateRandomRock(1);
 	}
 	
 	if (m_enemy_spawn_countdown >= sf::seconds(500000.f))
@@ -160,6 +160,13 @@ void Server::DoFrame()
 		tick_clock.restart();
 		m_enemy_spawn_countdown = sf::seconds(0.f);
 		CreateRandomEnemy();
+	}
+
+	if(m_rock_spawn_countdown >= sf::seconds(200000.f))
+	{
+		tick_clock.restart();
+		m_rock_spawn_countdown = sf::seconds(0.f);
+		CreateRandomRock(1);
 	}
 
 	NetworkManagerServer::sInstance->ProcessIncomingPackets();

@@ -3,7 +3,7 @@
 Rock::Rock()
 {
 	//SetScale(GetScale() * 0.5f);
-	SetCollisionRadius(20.f);
+	SetCollisionRadius(60.f);
 
 	//Add gravity to pickup
 	SetVelocity(Vector3(0, 250.f, 0));
