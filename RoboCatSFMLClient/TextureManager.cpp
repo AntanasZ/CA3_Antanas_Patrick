@@ -15,13 +15,14 @@ TextureManager::TextureManager()
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("background", "../Assets/Background.png");
 	CacheTexture("platform", "../Assets/Platform.png");
-	CacheTexture("creeper", "../Assets/CreeperIdle.png");
-	CacheTexture("ghost", "../Assets/GhostIdle.png");
-	CacheTexture("pterodactyl", "../Assets/PterodactylIdle.png");
-	CacheTexture("skull", "../Assets/SkullIdle.png");
-	CacheTexture("stripe", "../Assets/StripeIdle.png");
-	CacheTexture("turtle", "../Assets/TurtleIdle.png");
 	CacheTexture("rock", "../Assets/Rock.png");
+	CacheTexture("groundPlatform", "../Assets/GroundPlatform.png");
+	CacheTexture("fish1", "../Assets/Fish1.png");
+	CacheTexture("fish2", "../Assets/Fish2.png");
+	CacheTexture("fish3", "../Assets/Fish3.png");
+	CacheTexture("fish4", "../Assets/Fish4.png");
+	CacheTexture("fish5", "../Assets/Fish5.png");
+	CacheTexture("fish6", "../Assets/Fish6.png");
 }
 
 TexturePtr	TextureManager::GetTexture(const string& inTextureName)
