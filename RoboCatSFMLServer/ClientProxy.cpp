@@ -22,16 +22,16 @@ void ClientProxy::UpdateLastPacketTime()
 	mLastPacketFromClientTime = Timing::sInstance.GetTimef();
 }
 
-void	ClientProxy::HandleCatDied()
+void	ClientProxy::HandlePlayerDied()
 {
 	mTimeToRespawn = Timing::sInstance.GetFrameStartTime() + kRespawnDelay;
 }
 
-void	ClientProxy::RespawnCatIfNecessary()
+void	ClientProxy::RespawnPlayerIfNecessary()
 {
 	if (mTimeToRespawn != 0.f && Timing::sInstance.GetFrameStartTime() > mTimeToRespawn)
 	{
-		static_cast<Server*> (Engine::s_instance.get())->SpawnCatForPlayer(mPlayerId);
+		static_cast<Server*> (Engine::s_instance.get())->SpawnSharkForPlayer(mPlayerId);
 		mTimeToRespawn = 0.f;
 	}
 }

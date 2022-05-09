@@ -11,8 +11,8 @@ public:
 	void HandleNewClient(ClientProxyPtr inClientProxy);
 	void HandleLostClient(ClientProxyPtr inClientProxy);
 
-	RoboCatPtr	GetCatForPlayer(int inPlayerId);
-	void	SpawnCatForPlayer(int inPlayerId);
+	PlayerPtr	GetSharkForPlayer(int inPlayerId);
+	void	SpawnSharkForPlayer(int inPlayerId);
 
 
 private:

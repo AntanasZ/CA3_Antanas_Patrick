@@ -30,7 +30,7 @@
     <ClInclude Include="PlayerSpriteComponent.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="ReplicationManagerClient.hpp" />
-    <ClInclude Include="RoboCatClient.hpp" />
+    <ClInclude Include="PlayerClient.hpp" />
     <ClInclude Include="RoboCatClientPCH.hpp" />
     <ClInclude Include="RockClient.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
@@ -51,7 +51,7 @@
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="ReplicationManagerClient.cpp" />
-    <ClCompile Include="RoboCatClient.cpp" />
+    <ClCompile Include="PlayerClient.cpp" />
     <ClCompile Include="RoboCatClientPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

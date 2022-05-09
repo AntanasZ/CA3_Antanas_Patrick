@@ -16,7 +16,7 @@ bool Server::StaticInit()
 Server::Server()
 {
 
-	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
@@ -208,46 +208,46 @@ void Server::HandleNewClient(ClientProxyPtr inClientProxy)
 	int playerId = inClientProxy->GetPlayerId();
 
 	ScoreBoardManager::sInstance->AddEntry(playerId, inClientProxy->GetName());
-	SpawnCatForPlayer(playerId);
+	SpawnSharkForPlayer(playerId);
 }
 
-void Server::SpawnCatForPlayer(int inPlayerId)
+void Server::SpawnSharkForPlayer(int inPlayerId)
 {
-	RoboCatPtr cat = std::static_pointer_cast<RoboCat>(GameObjectRegistry::sInstance->CreateGameObject('RCAT'));
-	cat->SetColor(ScoreBoardManager::sInstance->GetEntry(inPlayerId)->GetColor());
-	cat->SetPlayerId(inPlayerId);
+	PlayerPtr player = std::static_pointer_cast<Player>(GameObjectRegistry::sInstance->CreateGameObject('PLAY'));
+	player->SetColor(ScoreBoardManager::sInstance->GetEntry(inPlayerId)->GetColor());
+	player->SetPlayerId(inPlayerId);
 	//gotta pick a better spawn location than this...
-	cat->SetLocation(Vector3(600.f - static_cast<float>(inPlayerId), 400.f, 0.f));
+	player->SetLocation(Vector3(600.f - static_cast<float>(inPlayerId), 400.f, 0.f));
 }
 
 void Server::HandleLostClient(ClientProxyPtr inClientProxy)
 {
-	//kill client's cat
+	//kill client's player
 	//remove client from scoreboard
 	int playerId = inClientProxy->GetPlayerId();
 
 	ScoreBoardManager::sInstance->RemoveEntry(playerId);
-	RoboCatPtr cat = GetCatForPlayer(playerId);
-	if (cat)
+	PlayerPtr player = GetSharkForPlayer(playerId);
+	if (player)
 	{
-		cat->SetDoesWantToDie(true);
+		player->SetDoesWantToDie(true);
 	}
 }
 
-RoboCatPtr Server::GetCatForPlayer(int inPlayerId)
+PlayerPtr Server::GetSharkForPlayer(int inPlayerId)
 {
-	//run through the objects till we find the cat...
-	//it would be nice if we kept a pointer to the cat on the clientproxy
-	//but then we'd have to clean it up when the cat died, etc.
+	//run through the objects till we find the player...
+	//it would be nice if we kept a pointer to the player on the clientproxy
+	//but then we'd have to clean it up when the player died, etc.
 	//this will work for now until it's a perf issue
 	const auto& gameObjects = World::sInstance->GetGameObjects();
 	for (int i = 0, c = gameObjects.size(); i < c; ++i)
 	{
 		GameObjectPtr go = gameObjects[i];
-		RoboCat* cat = go->GetAsCat();
-		if (cat && cat->GetPlayerId() == inPlayerId)
+		Player* player = go->GetAsPlayer();
+		if (player && player->GetPlayerId() == inPlayerId)
 		{
-			return std::static_pointer_cast<RoboCat>(go);
+			return std::static_pointer_cast<Player>(go);
 		}
 	}
 

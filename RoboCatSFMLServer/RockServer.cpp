@@ -12,26 +12,26 @@ void RockServer::HandleDying()
 }
 
 
-bool RockServer::HandleCollisionWithCat(RoboCat* inCat)
+bool RockServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
 	//SetDoesWantToDie(true);
-	if (inCat->GetLocation().mX < GetLocation().mX)
+	if (inPlayer->GetLocation().mX < GetLocation().mX)
 	{
-		inCat->SetLocation(Vector3(inCat->GetLocation().mX + GetCollisionRadius(), inCat->GetLocation().mY, inCat->GetLocation().mZ));
+		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX + GetCollisionRadius(), inPlayer->GetLocation().mY, inPlayer->GetLocation().mZ));
 	}
-	else if (inCat->GetLocation().mX > GetLocation().mX)
+	else if (inPlayer->GetLocation().mX > GetLocation().mX)
 	{
-		inCat->SetLocation(Vector3(inCat->GetLocation().mX - GetCollisionRadius(), inCat->GetLocation().mY, inCat->GetLocation().mZ));
+		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX - GetCollisionRadius(), inPlayer->GetLocation().mY, inPlayer->GetLocation().mZ));
 	}
 
-	if (inCat->GetLocation().mY < GetLocation().mY)
+	if (inPlayer->GetLocation().mY < GetLocation().mY)
 	{
-		inCat->SetLocation(Vector3(inCat->GetLocation().mX, inCat->GetLocation().mY + GetCollisionRadius(), inCat->GetLocation().mZ));
+		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX, inPlayer->GetLocation().mY + GetCollisionRadius(), inPlayer->GetLocation().mZ));
 	}
-	else if (inCat->GetLocation().mY > GetLocation().mY)
+	else if (inPlayer->GetLocation().mY > GetLocation().mY)
 	{
-		inCat->SetLocation(Vector3(inCat->GetLocation().mX, inCat->GetLocation().mY - GetCollisionRadius(), inCat->GetLocation().mZ));
+		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX, inPlayer->GetLocation().mY - GetCollisionRadius(), inPlayer->GetLocation().mZ));
 	}
 	/*if(inCat->GetLocation().mX < GetLocation().mX || inCat->GetLocation().mX > GetLocation().mX)
 	{

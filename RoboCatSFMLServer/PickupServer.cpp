@@ -13,12 +13,12 @@ void PickupServer::HandleDying()
 }
 
 
-bool PickupServer::HandleCollisionWithCat(RoboCat* inCat)
+bool PickupServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
 	SetDoesWantToDie(true);
 
-	ScoreBoardManager::sInstance->IncScore(inCat->GetPlayerId(), 1);
+	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 1);
 
 	return false;
 }

@@ -1,9 +1,9 @@
-class RoboCat : public GameObject
+class Player : public GameObject
 {
 public:
-	CLASS_IDENTIFICATION('RCAT', GameObject)
+	CLASS_IDENTIFICATION('PLAY', GameObject)
 
-	enum ECatReplicationState
+	enum EPlayerReplicationState
 	{
 		ECRS_Pose = 1 << 0,
 		ECRS_Color = 1 << 1,
@@ -14,11 +14,11 @@ public:
 	};
 
 
-	static	GameObject* StaticCreate() { return new RoboCat(); }
+	static	GameObject* StaticCreate() { return new Player(); }
 
 	virtual uint32_t GetAllStateMask()	const override { return ECRS_AllState; }
 
-	virtual	RoboCat* GetAsCat() override { return this; }
+	virtual	Player* GetAsPlayer() override { return this; }
 
 	virtual void Update() override;
 
@@ -38,7 +38,7 @@ public:
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 
 protected:
-	RoboCat();
+	Player();
 
 private:
 
@@ -54,7 +54,7 @@ private:
 
 	//bounce fraction when hitting various things
 	float				mWallRestitution;
-	float				mCatRestitution;
+	float				mPlayerRestitution;
 
 
 	uint32_t			mPlayerId;
@@ -73,5 +73,5 @@ protected:
 	bool mIsJumping;
 };
 
-typedef shared_ptr< RoboCat >	RoboCatPtr;
+typedef shared_ptr< Player >	PlayerPtr;
 

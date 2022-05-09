@@ -66,16 +66,16 @@ uint32_t Projectile::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDir
 
 
 
-bool Projectile::HandleCollisionWithCat(RoboCat* inCat)
+bool Projectile::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 
-	//you hit a cat, so look like you hit a cat
+	//you hit a player, so look like you hit a player
 	return false;
 }
 
 
-void Projectile::InitFromShooter(RoboCat* inShooter)
+void Projectile::InitFromShooter(Player* inShooter)
 {
 	SetColor(inShooter->GetColor());
 	SetPlayerId(inShooter->GetPlayerId());
@@ -96,6 +96,6 @@ void Projectile::Update()
 	SetLocation(GetLocation() + mVelocity * deltaTime);
 
 	
-	//we'll let the cats handle the collisions
+	//we'll let the players handle the collisions
 }
 

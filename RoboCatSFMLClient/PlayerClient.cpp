@@ -1,6 +1,6 @@
 #include "RoboCatClientPCH.hpp"
 
-RoboCatClient::RoboCatClient() :
+PlayerClient::PlayerClient() :
 	mTimeLocationBecameOutOfSync(0.f),
 	mTimeVelocityBecameOutOfSync(0.f)
 {
@@ -8,9 +8,9 @@ RoboCatClient::RoboCatClient() :
 	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("shark"));
 }
 
-void RoboCatClient::HandleDying()
+void PlayerClient::HandleDying()
 {
-	RoboCat::HandleDying();
+	Player::HandleDying();
 
 	//and if we're local, tell the hud so our health goes away!
 	if (GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId())
@@ -20,9 +20,9 @@ void RoboCatClient::HandleDying()
 }
 
 
-void RoboCatClient::Update()
+void PlayerClient::Update()
 {
-	//is this the cat owned by us?
+	//is this the player owned by us?
 	if (GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId())
 	{
 		const Move* pendingMove = InputManager::sInstance->GetAndClearPendingMove();
@@ -54,7 +54,7 @@ void RoboCatClient::Update()
 	}
 }
 
-void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
+void PlayerClient::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 
@@ -132,7 +132,7 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 			HUD::sInstance->SetPlayerHealth(mHealth);
 		}
 
-		DoClientSidePredictionAfterReplicationForLocalCat(readState);
+		DoClientSidePredictionAfterReplicationForLocalPlayer(readState);
 
 		//if this is a create packet, don't interpolate
 		if ((readState & ECRS_PlayerId) == 0)
@@ -142,7 +142,7 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 	}
 	else
 	{
-		DoClientSidePredictionAfterReplicationForRemoteCat(readState);
+		DoClientSidePredictionAfterReplicationForRemotePlayer(readState);
 
 		//will this smooth us out too? it'll interpolate us just 10% of the way there...
 		if ((readState & ECRS_PlayerId) == 0)
@@ -153,7 +153,7 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 	}
 }
 
-void RoboCatClient::DoClientSidePredictionAfterReplicationForLocalCat(uint32_t inReadState)
+void PlayerClient::DoClientSidePredictionAfterReplicationForLocalPlayer(uint32_t inReadState)
 {
 	if ((inReadState & ECRS_Pose) != 0)
 	{
@@ -175,9 +175,9 @@ void RoboCatClient::DoClientSidePredictionAfterReplicationForLocalCat(uint32_t i
 }
 
 
-void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const Vector3 & inOldLocation, const Vector3 & inOldVelocity, bool inIsForRemoteCat)
+void PlayerClient::InterpolateClientSidePrediction(float inOldRotation, const Vector3 & inOldLocation, const Vector3 & inOldVelocity, bool inIsForRemotePlayer)
 {
-	if (inOldRotation != GetRotation() && !inIsForRemoteCat)
+	if (inOldRotation != GetRotation() && !inIsForRemotePlayer)
 	{
 		LOG("ERROR! Move replay ended with incorrect rotation!", 0);
 	}
@@ -198,7 +198,7 @@ void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const V
 		float durationOutOfSync = time - mTimeLocationBecameOutOfSync;
 		if (durationOutOfSync < roundTripTime)
 		{
-			SetLocation(Lerp(inOldLocation, GetLocation(), inIsForRemoteCat ? (durationOutOfSync / roundTripTime) : 0.1f));
+			SetLocation(Lerp(inOldLocation, GetLocation(), inIsForRemotePlayer ? (durationOutOfSync / roundTripTime) : 0.1f));
 		}
 	}
 	else
@@ -223,7 +223,7 @@ void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const V
 		float durationOutOfSync = time - mTimeVelocityBecameOutOfSync;
 		if (durationOutOfSync < roundTripTime)
 		{
-			SetVelocity(Lerp(inOldVelocity, GetVelocity(), inIsForRemoteCat ? (durationOutOfSync / roundTripTime) : 0.1f));
+			SetVelocity(Lerp(inOldVelocity, GetVelocity(), inIsForRemotePlayer ? (durationOutOfSync / roundTripTime) : 0.1f));
 		}
 		//otherwise, fine...
 
@@ -239,14 +239,14 @@ void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const V
 
 //so what do we want to do here? need to do some kind of interpolation...
 
-void RoboCatClient::DoClientSidePredictionAfterReplicationForRemoteCat(uint32_t inReadState)
+void PlayerClient::DoClientSidePredictionAfterReplicationForRemotePlayer(uint32_t inReadState)
 {
 	if ((inReadState & ECRS_Pose) != 0)
 	{
 
 		//simulate movement for an additional RTT
 		float rtt = NetworkManagerClient::sInstance->GetRoundTripTime();
-		//LOG( "Other cat came in, simulating for an extra %f", rtt );
+		//LOG( "Other player came in, simulating for an extra %f", rtt );
 
 		//let's break into framerate sized chunks though so that we don't run through walls and do crazy things...
 		float deltaTime = 1.f / 30.f;

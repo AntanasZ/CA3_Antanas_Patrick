@@ -24,14 +24,14 @@ void ProjectileServer::Update()
 
 }
 
-bool ProjectileServer::HandleCollisionWithCat(RoboCat* inCat)
+bool ProjectileServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	if (inCat->GetPlayerId() != GetPlayerId())
+	if (inPlayer->GetPlayerId() != GetPlayerId())
 	{
 		//kill yourself!
 		SetDoesWantToDie(true);
 
-		static_cast<RoboCatServer*>(inCat)->TakeDamage(GetPlayerId());
+		static_cast<PlayerServer*>(inPlayer)->TakeDamage(GetPlayerId());
 
 	}
 

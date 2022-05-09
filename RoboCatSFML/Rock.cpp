@@ -9,9 +9,9 @@ Rock::Rock()
 	SetVelocity(Vector3(0, 250.f, 0));
 }
 
-bool Rock::HandleCollisionWithCat(RoboCat* inCat)
+bool Rock::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 	return false;
 }
 

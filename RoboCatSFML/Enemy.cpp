@@ -10,9 +10,9 @@ Enemy::Enemy()
 }
 
 
-bool Enemy::HandleCollisionWithCat(RoboCat* inCat)
+bool Enemy::HandleCollisionWithPlayer(Player* inPlayer)
 {
-	(void)inCat;
+	(void)inPlayer;
 	return false;
 }
 

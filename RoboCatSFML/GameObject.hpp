@@ -11,12 +11,12 @@ public:
 	GameObject();
 	virtual ~GameObject() {}
 
-	virtual RoboCat* GetAsCat() { return nullptr; }
+	virtual Player* GetAsPlayer() { return nullptr; }
 
 	virtual uint32_t GetAllStateMask() const { return 0; }
 
 	//return whether to keep processing collision
-	virtual bool HandleCollisionWithCat(RoboCat* inCat) { (void)inCat; return true; }
+	virtual bool HandleCollisionWithPlayer(Player* inPlayer) { (void)inPlayer; return true; }
 
 	virtual void Update();
 
