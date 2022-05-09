@@ -99,20 +99,24 @@ namespace
 
 	void CreateRandomEnemy()
 	{
+		Vector3 pickupMin(0.f, 20.f, 0.f);
+		Vector3 pickupMax(0.f, 700.f, 0.f);
 		sf::Int8 randomPosition;
-		Vector3 enemyLocation;
 		Vector3 enemyVelocity;
 
 		randomPosition = rand() % 2 + 1;
 
-		if(randomPosition == 1)
+		Vector3 enemyLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
+
+		if (randomPosition == 1)
 		{
-			enemyLocation = Vector3(10, 685, 0);
+			enemyLocation.mX = -20;
 			enemyVelocity = Vector3(250.f, 0.f, 0);
+			//pickup->SetScale(-1);
 		}
 		else
 		{
-			enemyLocation = Vector3(1270, 685, 0);
+			enemyLocation.mX = 1290;
 			enemyVelocity = Vector3(-250.f, 0.f, 0);
 		}
 
