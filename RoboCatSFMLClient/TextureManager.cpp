@@ -15,6 +15,7 @@ TextureManager::TextureManager()
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("background", "../Assets/Background.png");
 	CacheTexture("platform", "../Assets/Platform.png");
+	CacheTexture("rock", "../Assets/Rock.png");
 	CacheTexture("groundPlatform", "../Assets/GroundPlatform.png");
 	CacheTexture("fish1", "../Assets/Fish1.png");
 	CacheTexture("fish2", "../Assets/Fish2.png");

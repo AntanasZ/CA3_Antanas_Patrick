@@ -15,6 +15,7 @@
 #include "ProjectileClient.hpp"
 #include "EnemyClient.hpp"
 #include "PlatformClient.hpp"
+#include "RockClient.hpp"
 
 #include "HUD.hpp"
 
