@@ -63,18 +63,37 @@ bool Server::InitNetworkManager()
 namespace
 {
 
-	void CreateRandomPickups(int inPickupCount)
+	void CreateRandomPickup()
 	{
-		Vector3 pickupMin(10.f, -20.f, 0.f);
-		Vector3 pickupMax(1270.f, -20.f, 0.f);
+		Vector3 pickupMin(0.f, 20.f, 0.f);
+		Vector3 pickupMax(0.f, 700.f, 0.f);
+		Vector3 pickupVelocity;
+		sf::Int8 randomPosition;
 		GameObjectPtr go;
 
-		for (int i = 0; i < inPickupCount; ++i)
+		Vector3 pickupLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
+
+		randomPosition = rand() % 2 + 1;
+
+		PickupPtr pickup = std::static_pointer_cast<Pickup>(GameObjectRegistry::sInstance->CreateGameObject('PICK'));
+		//GameObjectPtr pickup = GameObjectRegistry::sInstance->CreateGameObject('PICK');
+		
+		if (randomPosition == 1)
 		{
-			go = GameObjectRegistry::sInstance->CreateGameObject('PICK');
-			Vector3 pickupLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
-			go->SetLocation(pickupLocation);
+			pickupLocation.mX = -20;
+			pickupVelocity = Vector3(250.f, 0.f, 0);
+			//pickup->SetScale(-1);
 		}
+		else
+		{
+			pickupLocation.mX = 1290;
+			pickupVelocity = Vector3(-250.f, 0.f, 0);
+		}
+
+		pickup->SetLocation(pickupLocation);
+		pickup->SetVelocity(pickupVelocity);
+		//pickup->SetScale(100);
+		
 	}
 
 	void CreateRandomEnemy()
@@ -82,7 +101,6 @@ namespace
 		sf::Int8 randomPosition;
 		Vector3 enemyLocation;
 		Vector3 enemyVelocity;
-		GameObjectPtr go;
 
 		randomPosition = rand() % 2 + 1;
 
@@ -136,7 +154,7 @@ void Server::DoFrame()
 	{
 		tick_clock.restart();
 		m_pickup_spawn_countdown = sf::seconds(0.f);
-		CreateRandomPickups(1);
+		CreateRandomPickup();
 	}
 	
 	if (m_enemy_spawn_countdown >= sf::seconds(500000.f))

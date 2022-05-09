@@ -3,8 +3,8 @@
 
 PickupServer::PickupServer()
 {
-	//pickup lives 4 seconds...
-	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 4.f;
+	//pickup lives 5.5 seconds...
+	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
 }
 
 void PickupServer::HandleDying()

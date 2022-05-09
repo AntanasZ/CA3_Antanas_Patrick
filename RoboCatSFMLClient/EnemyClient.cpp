@@ -4,7 +4,9 @@ EnemyClient::EnemyClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 
-	sf::Int8 randomEnemy = rand() % 6 + 1;
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("tomato"));
+
+	/*sf::Int8 randomEnemy = rand() % 6 + 1;
 
 	switch (randomEnemy)
 	{
@@ -26,6 +28,6 @@ EnemyClient::EnemyClient()
 	case 6:
 		mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("stripe"));
 		break;
-	}
+	}*/
 }
 
