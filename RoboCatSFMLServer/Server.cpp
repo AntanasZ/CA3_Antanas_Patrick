@@ -75,10 +75,14 @@ namespace
 
 		randomPosition = rand() % 2 + 1;
 
+		PickupPtr pickup = std::static_pointer_cast<Pickup>(GameObjectRegistry::sInstance->CreateGameObject('PICK'));
+		//GameObjectPtr pickup = GameObjectRegistry::sInstance->CreateGameObject('PICK');
+		
 		if (randomPosition == 1)
 		{
 			pickupLocation.mX = -20;
 			pickupVelocity = Vector3(250.f, 0.f, 0);
+			//pickup->SetScale(-1);
 		}
 		else
 		{
@@ -86,10 +90,9 @@ namespace
 			pickupVelocity = Vector3(-250.f, 0.f, 0);
 		}
 
-		PickupPtr pickup = std::static_pointer_cast<Pickup>(GameObjectRegistry::sInstance->CreateGameObject('PICK'));
-		
 		pickup->SetLocation(pickupLocation);
 		pickup->SetVelocity(pickupVelocity);
+		//pickup->SetScale(100);
 		
 	}
 

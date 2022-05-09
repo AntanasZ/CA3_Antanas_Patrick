@@ -4,8 +4,6 @@ PickupClient::PickupClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("fish1"));
-
 	sf::Int8 randomSprite = rand() % 6 + 1;
 
 	switch (randomSprite)

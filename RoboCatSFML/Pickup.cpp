@@ -4,9 +4,6 @@ Pickup::Pickup()
 {
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(30.f);
-
-	//Add gravity to pickup
-	//SetVelocity(Vector3(0, 250.f, 0));
 }
 
 
@@ -33,7 +30,9 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 		inOutputStream.Write(velocity.mX);
 		inOutputStream.Write(velocity.mY);
 
-		inOutputStream.Write(GetRotation());
+		inOutputStream.Write(GetScale());
+
+		//inOutputStream.Write(GetRotation());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -76,9 +75,13 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(velocity.mY);
 		SetVelocity(velocity);
 
-		float rotation;
+		float scale;
+		inInputStream.Read(scale);
+		SetScale(scale);
+
+		/*float rotation;
 		inInputStream.Read(rotation);
-		SetRotation(rotation);
+		SetRotation(rotation);*/
 	}
 
 
