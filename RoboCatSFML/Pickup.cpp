@@ -6,7 +6,7 @@ Pickup::Pickup()
 	SetCollisionRadius(20.f);
 
 	//Add gravity to pickup
-	SetVelocity(Vector3(0, 250.f, 0));
+	//SetVelocity(Vector3(0, 250.f, 0));
 }
 
 
@@ -28,6 +28,10 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 		Vector3 location = GetLocation();
 		inOutputStream.Write(location.mX);
 		inOutputStream.Write(location.mY);
+
+		Vector3 velocity = GetVelocity();
+		inOutputStream.Write(velocity.mX);
+		inOutputStream.Write(velocity.mY);
 
 		inOutputStream.Write(GetRotation());
 
@@ -66,6 +70,11 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(location.mX);
 		inInputStream.Read(location.mY);
 		SetLocation(location);
+
+		Vector3 velocity;
+		inInputStream.Read(velocity.mX);
+		inInputStream.Read(velocity.mY);
+		SetVelocity(velocity);
 
 		float rotation;
 		inInputStream.Read(rotation);
