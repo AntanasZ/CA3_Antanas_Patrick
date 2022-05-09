@@ -21,6 +21,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ROCK', RockServer::StaticCreate);
 
 	InitNetworkManager();
 
@@ -103,22 +104,36 @@ namespace
 		enemy->SetLocation(enemyLocation);
 		enemy->SetVelocity(enemyVelocity);
 	}
+
+	void CreateRandomRock(int rockCount)
+	{
+		Vector3 rockMin(10.f, -20.f, 0.f);
+		Vector3 rockMax(1270.f, -20.f, 0.f);
+		GameObjectPtr go;
+
+		for (int i = 0; i < rockCount; ++i)
+		{
+			go = GameObjectRegistry::sInstance->CreateGameObject('ROCK');
+			Vector3 pickupLocation = RoboMath::GetRandomVector(rockMin, rockMax);
+			go->SetLocation(pickupLocation);
+		}
+	}
 }
 
 
 void Server::SetupWorld()
 {
-	GameObjectPtr platform1 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	/*GameObjectPtr platform1 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 	GameObjectPtr platform2 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
-	GameObjectPtr platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
+	GameObjectPtr platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');*/
 
 	//platform1 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 	//platform2 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 	//platform3 = GameObjectRegistry::sInstance->CreateGameObject('PLAT');
 
-	platform1->SetLocation(Vector3(980.f, 500.f, 0));
+	/*platform1->SetLocation(Vector3(980.f, 500.f, 0));
 	platform2->SetLocation(Vector3(300.f, 500.f, 0));
-	platform3->SetLocation(Vector3(640.f, 300.f, 0));
+	platform3->SetLocation(Vector3(640.f, 300.f, 0));*/
 	//spawn some random mice
 	//CreateRandomMice(10);
 
@@ -137,6 +152,7 @@ void Server::DoFrame()
 		tick_clock.restart();
 		m_pickup_spawn_countdown = sf::seconds(0.f);
 		CreateRandomPickups(1);
+		CreateRandomRock(1);
 	}
 	
 	if (m_enemy_spawn_countdown >= sf::seconds(500000.f))
