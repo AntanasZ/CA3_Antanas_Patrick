@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoatClient.hpp" />
     <ClInclude Include="Client.hpp" />
     <ClInclude Include="EnemyClient.hpp" />
     <ClInclude Include="FontManager.hpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="ProjectileClient.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoatClient.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />
     <ClCompile Include="EnemyClient.cpp" />

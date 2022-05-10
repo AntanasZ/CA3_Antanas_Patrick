@@ -3,8 +3,8 @@
 
 ProjectileServer::ProjectileServer()
 {
-	//projectile lives a second...
-	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 1.f;
+	//projectile lives 4.5 seconds...
+	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 4.5f;
 }
 
 void ProjectileServer::HandleDying()

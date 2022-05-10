@@ -27,6 +27,8 @@ TextureManager::TextureManager()
 	CacheTexture("orca", "../Assets/Orca.png");
 	CacheTexture("octopus", "../Assets/Octopus.png");
 	CacheTexture("shark", "../Assets/Shark.png");
+	CacheTexture("boat", "../Assets/Boat.png");
+	CacheTexture("mine", "../Assets/Mine.png");
 }
 
 TexturePtr	TextureManager::GetTexture(const string& inTextureName)

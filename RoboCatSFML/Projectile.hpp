@@ -4,7 +4,7 @@ public:
 
 	CLASS_IDENTIFICATION('PROJ', GameObject)
 
-		enum EProjectileReplicationState
+	enum EProjectileReplicationState
 	{
 		EYRS_Pose = 1 << 0,
 		EYRS_Color = 1 << 1,
@@ -26,6 +26,7 @@ public:
 	int			GetPlayerId() const { return mPlayerId; }
 
 	void		InitFromShooter(Player* inShooter);
+	void		InitFromBoat(Boat* inBoat);
 
 	virtual void Update() override;
 

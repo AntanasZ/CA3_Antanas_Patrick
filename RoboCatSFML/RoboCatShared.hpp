@@ -47,6 +47,7 @@ using std::string;
 using std::unordered_set;
 
 class Player;
+class Boat;
 class GameObject;
 
 #include "SFML\System.hpp"
@@ -87,6 +88,7 @@ class GameObject;
 #include "Enemy.hpp"
 #include "Platform.hpp"
 #include "Rock.hpp"
+#include "Boat.hpp"
 #include "StringUtils.hpp"
 #include "ScoreBoardManager.hpp"
 
