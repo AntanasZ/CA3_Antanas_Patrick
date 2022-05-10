@@ -4,7 +4,7 @@
 ProjectileClient::ProjectileClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("tomato"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("mine"));
 }
 
 

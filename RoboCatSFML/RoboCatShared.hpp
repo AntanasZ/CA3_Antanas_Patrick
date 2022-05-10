@@ -47,6 +47,7 @@ using std::string;
 using std::unordered_set;
 
 class Player;
+class Boat;
 class GameObject;
 
 #include "SFML\System.hpp"

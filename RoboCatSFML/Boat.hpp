@@ -3,7 +3,7 @@ class Boat : public GameObject
 public:
 	CLASS_IDENTIFICATION('BOAT', GameObject)
 
-		enum EEnemyReplicationState
+	enum EBoatReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,

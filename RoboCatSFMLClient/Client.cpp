@@ -27,6 +27,7 @@ Client::Client()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ROCK', RockClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('BOAT', BoatClient::StaticCreate);
 
 	string destination = StringUtils::GetCommandLineArg(1);
 	string name = StringUtils::GetCommandLineArg(2);

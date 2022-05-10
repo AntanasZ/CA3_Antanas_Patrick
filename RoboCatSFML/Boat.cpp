@@ -5,7 +5,7 @@ Boat::Boat()
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(20.f);
 
-	//Add initial velocity to enemy
+	//Add initial velocity to boat
 	SetVelocity(Vector3(0.f, 0.f, 0));
 }
 

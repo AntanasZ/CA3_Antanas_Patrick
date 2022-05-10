@@ -41,6 +41,7 @@ Server::Server()
 	sf::Clock tick_clock;
 	sf::Time m_pickup_spawn_countdown;
 	sf::Time m_enemy_spawn_countdown;
+	sf::Time m_boat_spawn_countdown;
 }
 
 
@@ -67,7 +68,7 @@ namespace
 
 	void CreateRandomPickup()
 	{
-		Vector3 pickupMin(0.f, 30.f, 0.f);
+		Vector3 pickupMin(0.f, 40.f, 0.f);
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		Vector3 pickupVelocity;
 		sf::Int8 randomPosition;
@@ -100,7 +101,7 @@ namespace
 
 	void CreateRandomEnemy()
 	{
-		Vector3 pickupMin(0.f, 30.f, 0.f);
+		Vector3 pickupMin(0.f, 40.f, 0.f);
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		sf::Int8 randomPosition;
 		Vector3 enemyVelocity;
@@ -141,6 +142,31 @@ namespace
 			go->SetLocation(pickupLocation);
 		}
 	}
+
+	void CreateRandomBoat()
+	{
+		sf::Int8 randomPosition;
+		Vector3 boatLocation = Vector3(0.f, -50.f, 0);
+		Vector3 boatVelocity;
+
+		randomPosition = rand() % 2 + 1;
+
+		if (randomPosition == 1)
+		{
+			boatLocation.mX = -20;
+			boatVelocity = Vector3(350.f, 0.f, 0);
+		}
+		else
+		{
+			boatLocation.mX = 1290;
+			boatVelocity = Vector3(-350.f, 0.f, 0);
+		}
+
+		BoatPtr boat = std::static_pointer_cast<Boat>(GameObjectRegistry::sInstance->CreateGameObject('BOAT'));
+
+		boat->SetLocation(boatLocation);
+		boat->SetVelocity(boatVelocity);
+	}
 }
 
 
@@ -170,6 +196,7 @@ void Server::DoFrame()
 	m_pickup_spawn_countdown += tick_time;
 	m_enemy_spawn_countdown += tick_time;
 	m_rock_spawn_countdown += tick_time;
+	m_boat_spawn_countdown += tick_time;
 
 	if (m_pickup_spawn_countdown >= sf::seconds(100000.f))
 	{
@@ -183,6 +210,13 @@ void Server::DoFrame()
 		tick_clock.restart();
 		m_enemy_spawn_countdown = sf::seconds(0.f);
 		CreateRandomEnemy();
+	}
+
+	if (m_boat_spawn_countdown >= sf::seconds(1000000.f))
+	{
+		tick_clock.restart();
+		m_boat_spawn_countdown = sf::seconds(0.f);
+		CreateRandomBoat();
 	}
 
 	if(m_rock_spawn_countdown >= sf::seconds(200000.f))

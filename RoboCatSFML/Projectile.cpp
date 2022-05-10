@@ -5,7 +5,7 @@ Projectile::Projectile() :
 	mVelocity(Vector3::Zero),
 	mPlayerId(0)
 {
-	SetScale(GetScale() * 0.25f);
+	SetScale(GetScale() * 0.9f);
 	SetCollisionRadius(20.f);
 }
 
@@ -85,6 +85,14 @@ void Projectile::InitFromShooter(Player* inShooter)
 	SetLocation(inShooter->GetLocation() /* + forward * 0.55f */);
 
 	SetRotation(inShooter->GetRotation());
+}
+
+void Projectile::InitFromBoat(Boat* inBoat)
+{
+	SetVelocity(Vector3(0, 300.f, 0));
+	SetLocation(inBoat->GetLocation() /* + forward * 0.55f */);
+
+	//SetRotation(inShooter->GetRotation());
 }
 
 void Projectile::Update()
