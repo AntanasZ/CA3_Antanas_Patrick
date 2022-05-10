@@ -162,8 +162,17 @@ void Player::ProcessCollisions()
 						{
 							Vector3 impulse = relVelDotDir * dirToTarget;
 
-							mVelocity -= impulse * 2.f;
-							mVelocity *= mWallRestitution;
+							if (targetPlayer)
+							{
+								//mVelocity -= impulse;
+								//mVelocity *= mPlayerRestitution;
+							}
+							else
+							{
+								mVelocity -= impulse * 2.f;
+								mVelocity *= mWallRestitution;
+							}
+
 						}
 					}
 				}
