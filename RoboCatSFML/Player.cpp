@@ -54,7 +54,7 @@ void Player::AdjustVelocityByThrust(float inDeltaTime)
 {
 	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
 	//simulating acceleration makes the client prediction a bit more complex
-	Vector3 forwardVector(0, -sqrtf(2.0f * 30 * 2), 0); //= GetForwardVector();
+	Vector3 forwardVector = GetForwardVector();//(0, -sqrtf(2.0f * 30 * 2), 0);
 	mVelocity = forwardVector * (mThrustDir  * inDeltaTime * mMaxLinearSpeed);
 
 	Vector3 leftRightVector(1, 0, 0);
@@ -68,9 +68,9 @@ void Player::SimulateMovement(float inDeltaTime)
 	AdjustVelocityByThrust(inDeltaTime);
 	//Add gravity to player
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
-	SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
+	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 
-	Accelerate(Vector3(0, 981.f, 0));
+	//Accelerate(Vector3(0, 981.f, 0));
 
 	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 	SetLocation(GetLocation() + mVelocityLeftRight * inDeltaTime);

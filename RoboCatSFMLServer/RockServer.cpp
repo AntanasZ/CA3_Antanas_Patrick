@@ -25,14 +25,14 @@ bool RockServer::HandleCollisionWithPlayer(Player* inPlayer)
 		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX - GetCollisionRadius(), inPlayer->GetLocation().mY, inPlayer->GetLocation().mZ));
 	}
 
-	if (inPlayer->GetLocation().mY < GetLocation().mY)
+	/*if (inPlayer->GetLocation().mY < GetLocation().mY)
 	{
 		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX, inPlayer->GetLocation().mY + GetCollisionRadius(), inPlayer->GetLocation().mZ));
 	}
 	else if (inPlayer->GetLocation().mY > GetLocation().mY)
 	{
 		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX, inPlayer->GetLocation().mY - GetCollisionRadius(), inPlayer->GetLocation().mZ));
-	}
+	}*/
 	/*if(inCat->GetLocation().mX < GetLocation().mX || inCat->GetLocation().mX > GetLocation().mX)
 	{
 		inCat->SetVelocity(Vector3(0.f, inCat->GetVelocity().mY, inCat->GetVelocity().mZ));
