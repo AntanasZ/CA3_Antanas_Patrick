@@ -15,7 +15,6 @@ Player::Player() :
 	mThrustLeftRight(0.f),
 	mPlayerId(0),
 	mIsShooting(false),
-	mIsJumping(false),
 	mHealth(10)
 {
 	SetCollisionRadius(50.f);
@@ -33,21 +32,12 @@ void Player::ProcessInput(float inDeltaTime, const InputState& inInputState)
 	float inputForwardDelta = inInputState.GetDesiredVerticalDelta();
 	float inputLeftRightDelta = inInputState.GetDesiredHorizontalDelta();
 
-	mIsJumping = inInputState.IsJumping();
+	mThrustDir = inputForwardDelta;
 
-	/*if(!mIsJumping)
-	{*/
-		mThrustDir = inputForwardDelta;
-	/*}
-	else
-	{
-		mThrustDir = 0.f;
-	}*/
 
 	mThrustLeftRight = inputLeftRightDelta;
-	
-	mIsShooting = inInputState.IsShooting();
 
+	mIsShooting = inInputState.IsShooting();
 }
 
 void Player::AdjustVelocityByThrust(float inDeltaTime)
@@ -64,16 +54,20 @@ void Player::AdjustVelocityByThrust(float inDeltaTime)
 
 void Player::SimulateMovement(float inDeltaTime)
 {
+	
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
+
+	SetLocation(GetLocation() + mVelocity * inDeltaTime);
+	SetLocation(GetLocation() + mVelocityLeftRight * inDeltaTime);
+	
 	//Add gravity to player
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 
 	//Accelerate(Vector3(0, 981.f, 0));
 
-	SetLocation(GetLocation() + mVelocity * inDeltaTime);
-	SetLocation(GetLocation() + mVelocityLeftRight * inDeltaTime);
+	
 
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, 981.f * inDeltaTime, 0));
 
@@ -101,6 +95,7 @@ void Player::ProcessCollisions()
 	for (auto goIt = World::sInstance->GetGameObjects().begin(), end = World::sInstance->GetGameObjects().end(); goIt != end; ++goIt)
 	{
 		GameObject* target = goIt->get();
+		
 		if (target != this && !target->DoesWantToDie())
 		{
 			//simple collision test for spheres- are the radii summed less than the distance?
@@ -277,6 +272,3 @@ uint32_t Player::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 
 
 }
-
-
-

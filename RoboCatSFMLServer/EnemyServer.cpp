@@ -17,7 +17,7 @@ bool EnemyServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
 	//SetDoesWantToDie(true);
-
+	static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId());
 	//ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 1);
 
 	return false;
