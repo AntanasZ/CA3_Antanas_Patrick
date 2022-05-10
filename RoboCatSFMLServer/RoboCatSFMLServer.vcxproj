@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BoatServer.hpp" />
     <ClInclude Include="ClientProxy.hpp" />
     <ClInclude Include="EnemyServer.hpp" />
     <ClInclude Include="PickupServer.hpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="ProjectileServer.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoatServer.cpp" />
     <ClCompile Include="ClientProxy.cpp" />
     <ClCompile Include="EnemyServer.cpp" />
     <ClCompile Include="PickupServer.cpp" />

@@ -16,6 +16,7 @@
 #include "EnemyClient.hpp"
 #include "PlatformClient.hpp"
 #include "RockClient.hpp"
+#include "BoatClient.hpp"
 
 #include "HUD.hpp"
 

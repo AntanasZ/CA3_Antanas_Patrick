@@ -22,6 +22,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ROCK', RockServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('BOAT', BoatServer::StaticCreate);
 
 	InitNetworkManager();
 
@@ -66,7 +67,7 @@ namespace
 
 	void CreateRandomPickup()
 	{
-		Vector3 pickupMin(0.f, 20.f, 0.f);
+		Vector3 pickupMin(0.f, 30.f, 0.f);
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		Vector3 pickupVelocity;
 		sf::Int8 randomPosition;
@@ -99,7 +100,7 @@ namespace
 
 	void CreateRandomEnemy()
 	{
-		Vector3 pickupMin(0.f, 20.f, 0.f);
+		Vector3 pickupMin(0.f, 30.f, 0.f);
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		sf::Int8 randomPosition;
 		Vector3 enemyVelocity;

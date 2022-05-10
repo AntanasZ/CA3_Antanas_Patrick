@@ -13,3 +13,4 @@
 #include "EnemyServer.hpp"
 #include "PlatformServer.hpp"
 #include "RockServer.hpp"
+#include "BoatServer.hpp"
