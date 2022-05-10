@@ -48,6 +48,7 @@ void PlayerServer::Update()
 		//do some AI stuff
 		SimulateMovement(Timing::sInstance.GetDeltaTime());
 	}
+	
 
 
 	HandleShooting();
@@ -80,7 +81,8 @@ void PlayerServer::TakeDamage(int inDamagingPlayerId)
 	if (mHealth <= 0.f)
 	{
 		//score one for damaging player...
-		ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 1);
+		//ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 1);
+		ScoreBoardManager::sInstance->ReduceScore(GetPlayerId(), 5);
 
 		//and you want to die
 		SetDoesWantToDie(true);

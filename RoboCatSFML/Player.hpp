@@ -70,7 +70,6 @@ protected:
 	int					mHealth;
 
 	bool				mIsShooting;
-	bool mIsJumping;
 };
 
 typedef shared_ptr< Player >	PlayerPtr;

@@ -34,6 +34,22 @@ void ScoreBoardManager::Entry::SetScore(int32_t inScore)
 
 }
 
+void ScoreBoardManager::ReduceScore(uint32_t inPlayerId, int inAmount)
+{
+	Entry* entry = GetEntry(inPlayerId);
+	if (entry)
+	{
+		if(entry->GetScore() <= 5)
+		{
+			entry->SetScore(0);
+		}
+		else
+		{
+			entry->SetScore(entry->GetScore() - inAmount);
+		}
+	}
+}
+
 
 ScoreBoardManager::Entry* ScoreBoardManager::GetEntry(uint32_t inPlayerId)
 {
@@ -78,8 +94,6 @@ void ScoreBoardManager::IncScore(uint32_t inPlayerId, int inAmount)
 		entry->SetScore(entry->GetScore() + inAmount);
 	}
 }
-
-
 
 bool ScoreBoardManager::Write(OutputMemoryBitStream& inOutputStream) const
 {
