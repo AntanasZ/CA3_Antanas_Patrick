@@ -83,24 +83,21 @@ namespace
 		randomPosition = rand() % 2 + 1;
 
 		PickupPtr pickup = std::static_pointer_cast<Pickup>(GameObjectRegistry::sInstance->CreateGameObject('PICK'));
-		//GameObjectPtr pickup = GameObjectRegistry::sInstance->CreateGameObject('PICK');
 		
 		if (randomPosition == 1)
 		{
 			pickupLocation.mX = -20;
 			pickupVelocity = Vector3(250.f, 0.f, 0);
-			//pickup->SetScale(-1);
 		}
 		else
 		{
 			pickupLocation.mX = 1290;
 			pickupVelocity = Vector3(-250.f, 0.f, 0);
+			pickup->SetScale(pickup->GetScale() * -1.f);
 		}
 
 		pickup->SetLocation(pickupLocation);
-		pickup->SetVelocity(pickupVelocity);
-		//pickup->SetScale(100);
-		
+		pickup->SetVelocity(pickupVelocity);		
 	}
 
 	void CreateRandomEnemy()
@@ -114,21 +111,19 @@ namespace
 
 		Vector3 enemyLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
 
+		EnemyPtr enemy = std::static_pointer_cast<Enemy>(GameObjectRegistry::sInstance->CreateGameObject('ENEM'));
+
 		if (randomPosition == 1)
 		{
 			enemyLocation.mX = -20;
 			enemyVelocity = Vector3(250.f, 0.f, 0);
-			//pickup->SetScale(-1);
 		}
 		else
 		{
 			enemyLocation.mX = 1290;
 			enemyVelocity = Vector3(-250.f, 0.f, 0);
+			enemy->SetScale(enemy->GetScale() * -1.f);
 		}
-
-		//go = GameObjectRegistry::sInstance->CreateGameObject('ENEM');
-		EnemyPtr enemy = std::static_pointer_cast<Enemy>(GameObjectRegistry::sInstance->CreateGameObject('ENEM'));
-
 		enemy->SetLocation(enemyLocation);
 		enemy->SetVelocity(enemyVelocity);
 	}
@@ -152,6 +147,8 @@ namespace
 
 		randomPosition = rand() % 2 + 1;
 
+		BoatPtr boat = std::static_pointer_cast<Boat>(GameObjectRegistry::sInstance->CreateGameObject('BOAT'));
+
 		if (randomPosition == 1)
 		{
 			boatLocation.mX = -20;
@@ -161,9 +158,8 @@ namespace
 		{
 			boatLocation.mX = 1290;
 			boatVelocity = Vector3(-350.f, 0.f, 0);
+			boat->SetScale(boat->GetScale() * -1.f);
 		}
-
-		BoatPtr boat = std::static_pointer_cast<Boat>(GameObjectRegistry::sInstance->CreateGameObject('BOAT'));
 
 		boat->SetLocation(boatLocation);
 		boat->SetVelocity(boatVelocity);

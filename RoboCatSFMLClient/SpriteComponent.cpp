@@ -27,8 +27,19 @@ sf::Sprite& SpriteComponent::GetSprite()
 	// Update the sprite based on the game object stuff.
 	auto pos = mGameObject->GetLocation();
 	auto rot = mGameObject->GetRotation();
+	auto sca = mGameObject->GetScale();
 	m_sprite.setPosition(pos.mX, pos.mY);
 	m_sprite.setRotation(rot);
+
+	if (sca > 0)
+	{
+		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
+	}
+	else if(!mGameObject->GetSpriteUpdated())
+	{
+		m_sprite.scale(-1.f, 1.f);
+		mGameObject->SetSpriteUpdated(true);
+	}
 
 	return m_sprite;
 }

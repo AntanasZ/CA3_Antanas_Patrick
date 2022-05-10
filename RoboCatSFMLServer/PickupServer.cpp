@@ -12,7 +12,6 @@ void PickupServer::HandleDying()
 	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
-
 bool PickupServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
