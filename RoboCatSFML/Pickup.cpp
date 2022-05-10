@@ -32,7 +32,7 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 
 		inOutputStream.Write(GetScale());
 
-		//inOutputStream.Write(GetRotation());
+		inOutputStream.Write(GetSpriteUpdated());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -79,9 +79,9 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(scale);
 		SetScale(scale);
 
-		/*float rotation;
-		inInputStream.Read(rotation);
-		SetRotation(rotation);*/
+		bool spriteUpdated;
+		inInputStream.Read(spriteUpdated);
+		SetSpriteUpdated(spriteUpdated);
 	}
 
 

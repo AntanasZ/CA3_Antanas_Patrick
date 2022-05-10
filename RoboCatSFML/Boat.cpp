@@ -33,7 +33,9 @@ uint32_t Boat::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 		inOutputStream.Write(velocity.mX);
 		inOutputStream.Write(velocity.mY);
 
-		inOutputStream.Write(GetRotation());
+		inOutputStream.Write(GetScale());
+
+		inOutputStream.Write(GetSpriteUpdated());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -76,9 +78,13 @@ void Boat::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(velocity.mY);
 		SetVelocity(velocity);
 
-		float rotation;
-		inInputStream.Read(rotation);
-		SetRotation(rotation);
+		float scale;
+		inInputStream.Read(scale);
+		SetScale(scale);
+
+		bool spriteUpdated;
+		inInputStream.Read(spriteUpdated);
+		SetSpriteUpdated(spriteUpdated);
 	}
 
 

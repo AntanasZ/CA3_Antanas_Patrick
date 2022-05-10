@@ -139,38 +139,32 @@ void Player::ProcessCollisions()
 					Vector3 dirToTarget = delta;
 					dirToTarget.Normalize2D();
 					Vector3 acceptableDeltaFromSourceToTarget = dirToTarget * collisionDist;
-					//important note- we only move this player. the other player can take care of moving itself
-					SetLocation(targetLocation - acceptableDeltaFromSourceToTarget);
-
-
-					Vector3 relVel = mVelocity;
 
 					//if other object is a player, it might have velocity, so there might be relative velocity...
 					Player* targetPlayer = target->GetAsPlayer();
 					if (targetPlayer)
 					{
-						relVel -= targetPlayer->mVelocity;
+						//relVel -= targetPlayer->mVelocity;
 					}
-
-					//got vel with dir between objects to figure out if they're moving towards each other
-					//and if so, the magnitude of the impulse ( since they're both just balls )
-					float relVelDotDir = Dot2D(relVel, dirToTarget);
-
-					if (relVelDotDir > 0.f)
+					else
 					{
-						Vector3 impulse = relVelDotDir * dirToTarget;
+						//important note- we only move this player. the other player can take care of moving itself
+						SetLocation(targetLocation - acceptableDeltaFromSourceToTarget);
 
-						if (targetPlayer)
+
+						Vector3 relVel = mVelocity;
+
+						//got vel with dir between objects to figure out if they're moving towards each other
+					    //and if so, the magnitude of the impulse ( since they're both just balls )
+						float relVelDotDir = Dot2D(relVel, dirToTarget);
+
+						if (relVelDotDir > 0.f)
 						{
-							mVelocity -= impulse;
-							mVelocity *= mPlayerRestitution;
-						}
-						else
-						{
+							Vector3 impulse = relVelDotDir * dirToTarget;
+
 							mVelocity -= impulse * 2.f;
 							mVelocity *= mWallRestitution;
 						}
-
 					}
 				}
 			}

@@ -31,7 +31,11 @@ bool ProjectileServer::HandleCollisionWithPlayer(Player* inPlayer)
 		//kill yourself!
 		SetDoesWantToDie(true);
 
-		static_cast<PlayerServer*>(inPlayer)->TakeDamage(GetPlayerId());
+		if (!inPlayer->GetInvulnerable())
+		{
+			inPlayer->SetInvulnerable(true);
+			static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId());
+		}
 
 	}
 
