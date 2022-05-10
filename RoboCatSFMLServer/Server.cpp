@@ -16,7 +16,8 @@ bool Server::StaticInit()
 Server::Server() :
 	m_rock_spawn_countdown(0.f),
 	m_pickup_spawn_countdown(0.f),
-	m_enemy_spawn_countdown(0.f)
+	m_enemy_spawn_countdown(0.f),
+	m_boat_spawn_countdown(0.f)
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);
@@ -132,18 +133,15 @@ namespace
 		enemy->SetVelocity(enemyVelocity);
 	}
 
-	void CreateRandomRock(int rockCount)
+	void CreateRandomRock()
 	{
 		Vector3 rockMin(10.f, -20.f, 0.f);
 		Vector3 rockMax(1270.f, -20.f, 0.f);
 		GameObjectPtr go;
 
-		for (int i = 0; i < rockCount; ++i)
-		{
-			go = GameObjectRegistry::sInstance->CreateGameObject('ROCK');
-			Vector3 pickupLocation = RoboMath::GetRandomVector(rockMin, rockMax);
-			go->SetLocation(pickupLocation);
-		}
+		go = GameObjectRegistry::sInstance->CreateGameObject('ROCK');
+		Vector3 pickupLocation = RoboMath::GetRandomVector(rockMin, rockMax);
+		go->SetLocation(pickupLocation);
 	}
 
 	void CreateRandomBoat()
@@ -231,14 +229,15 @@ void Server::DoFrame()
 	m_rock_spawn_countdown += Timing::sInstance.GetDeltaTime();
 	m_enemy_spawn_countdown += Timing::sInstance.GetDeltaTime();
 	m_pickup_spawn_countdown += Timing::sInstance.GetDeltaTime();
+	m_boat_spawn_countdown += Timing::sInstance.GetDeltaTime();
 
-	if (m_pickup_spawn_countdown >= 2.f)
+	if (m_pickup_spawn_countdown >= 0.7f)
 	{
 		m_pickup_spawn_countdown = 0.f;
 		CreateRandomPickup();
 	}
 
-	if (m_enemy_spawn_countdown >= 10.f)
+	if (m_enemy_spawn_countdown >= 6.5f)
 	{
 		m_enemy_spawn_countdown = 0.f;
 		CreateRandomEnemy();
@@ -247,7 +246,13 @@ void Server::DoFrame()
 	if (m_rock_spawn_countdown >= 6.f)
 	{
 		m_rock_spawn_countdown = 0.f;
-		CreateRandomRock(1);
+		CreateRandomRock();
+	}
+
+	if (m_boat_spawn_countdown >= 12.f)
+	{
+		m_boat_spawn_countdown = 0.f;
+		CreateRandomBoat();
 	}
 
 	NetworkManagerServer::sInstance->ProcessIncomingPackets();

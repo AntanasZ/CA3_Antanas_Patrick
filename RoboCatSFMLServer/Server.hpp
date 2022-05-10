@@ -20,15 +20,16 @@ private:
 
 	bool	InitNetworkManager();
 	void	SetupWorld();
-	sf::Time tick_rate;
+	/*sf::Time tick_rate;
 	sf::Time tick_time;
 	sf::Clock tick_clock;
 	sf::Time m_pickup_spawn_countdown;
 	sf::Time m_enemy_spawn_countdown;
 	sf::Time m_boat_spawn_countdown;
-	sf::Time m_rock_spawn_countdown;
+	sf::Time m_rock_spawn_countdown;*/
 	float m_pickup_spawn_countdown;
 	float m_enemy_spawn_countdown;
 	float m_rock_spawn_countdown;
+	float m_boat_spawn_countdown;
 };
 
