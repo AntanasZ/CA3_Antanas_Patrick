@@ -78,11 +78,11 @@ void PlayerServer::HandleShooting()
 void PlayerServer::TakeDamage(int inDamagingPlayerId)
 {
 	mHealth--;
+	ScoreBoardManager::sInstance->ReduceScore(GetPlayerId(), 5);
 	if (mHealth <= 0.f)
 	{
 		//score one for damaging player...
 		//ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 1);
-		ScoreBoardManager::sInstance->ReduceScore(GetPlayerId(), 5);
 
 		//and you want to die
 		SetDoesWantToDie(true);

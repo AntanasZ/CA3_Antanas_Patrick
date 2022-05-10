@@ -15,7 +15,9 @@ Player::Player() :
 	mThrustLeftRight(0.f),
 	mPlayerId(0),
 	mIsShooting(false),
-	mHealth(10)
+	mHealth(10),
+	mInvulnerabilityCountdown(0.f),
+	mIsInvulnerable(false)
 {
 	SetCollisionRadius(50.f);
 }
@@ -66,13 +68,34 @@ void Player::SimulateMovement(float inDeltaTime)
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, mVelocity.mY, 0));
 
 	//Accelerate(Vector3(0, 981.f, 0));
+	if(mIsInvulnerable)
+	{
+		mInvulnerabilityCountdown += inDeltaTime;
+	}
 
+	if(mInvulnerabilityCountdown > 5.f)
+	{
+		mIsInvulnerable = false;
+		mInvulnerabilityCountdown = 0.f;
+	}
 	
 
 	//SetVelocity(Vector3(mVelocityLeftRight.mX, 981.f * inDeltaTime, 0));
 
 	ProcessCollisions();
 }
+
+void Player::SetInvulnerable(bool value)
+{
+	mIsInvulnerable = value;
+}
+
+bool Player::GetInvulnerable()
+{
+	return mIsInvulnerable;
+}
+
+
 
 void Player::Update()
 {
