@@ -13,7 +13,10 @@ bool Server::StaticInit()
 	return true;
 }
 
-Server::Server()
+Server::Server() :
+	m_rock_spawn_countdown(0.f),
+	m_pickup_spawn_countdown(0.f),
+	m_enemy_spawn_countdown(0.f)
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);
@@ -192,7 +195,7 @@ void Server::SetupWorld()
 
 void Server::DoFrame()
 {
-	tick_time += tick_clock.getElapsedTime();
+	/*tick_time += tick_clock.getElapsedTime();
 	m_pickup_spawn_countdown += tick_time;
 	m_enemy_spawn_countdown += tick_time;
 	m_rock_spawn_countdown += tick_time;
@@ -223,6 +226,27 @@ void Server::DoFrame()
 	{
 		tick_clock.restart();
 		m_rock_spawn_countdown = sf::seconds(0.f);
+		CreateRandomRock(1);
+	}*/
+	m_rock_spawn_countdown += Timing::sInstance.GetDeltaTime();
+	m_enemy_spawn_countdown += Timing::sInstance.GetDeltaTime();
+	m_pickup_spawn_countdown += Timing::sInstance.GetDeltaTime();
+
+	if (m_pickup_spawn_countdown >= 2.f)
+	{
+		m_pickup_spawn_countdown = 0.f;
+		CreateRandomPickup();
+	}
+
+	if (m_enemy_spawn_countdown >= 10.f)
+	{
+		m_enemy_spawn_countdown = 0.f;
+		CreateRandomEnemy();
+	}
+
+	if (m_rock_spawn_countdown >= 6.f)
+	{
+		m_rock_spawn_countdown = 0.f;
 		CreateRandomRock(1);
 	}
 

@@ -19,6 +19,7 @@ public:
 		int				GetScore()		const { return mScore; }
 
 		void			SetScore(int inScore);
+		
 
 		bool			Write(OutputMemoryBitStream& inOutputStream) const;
 		bool			Read(InputMemoryBitStream& inInputStream);
@@ -38,6 +39,7 @@ public:
 	bool	RemoveEntry(uint32_t inPlayerId);
 	void	AddEntry(uint32_t inPlayerId, const string& inPlayerName);
 	void	IncScore(uint32_t inPlayerId, int inAmount);
+	void ReduceScore(uint32_t inPlayerId, int inAmount);
 
 	bool	Write(OutputMemoryBitStream& inOutputStream) const;
 	bool	Read(InputMemoryBitStream& inInputStream);

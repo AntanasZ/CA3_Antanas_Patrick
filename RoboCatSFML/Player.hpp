@@ -35,6 +35,9 @@ public:
 	const Vector3& GetVelocity()						const { return mVelocity; }
 	void Accelerate(const Vector3 inVelocity) { mVelocity += inVelocity; }
 
+	void SetInvulnerable(bool value);
+	bool GetInvulnerable();
+
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 
 protected:
@@ -70,7 +73,8 @@ protected:
 	int					mHealth;
 
 	bool				mIsShooting;
-	bool mIsJumping;
+	bool mIsInvulnerable;
+	float mInvulnerabilityCountdown;
 };
 
 typedef shared_ptr< Player >	PlayerPtr;
