@@ -14,16 +14,21 @@ void RockServer::HandleDying()
 
 bool RockServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
+	if (!inPlayer->GetInvulnerable())
+	{
+		inPlayer->SetInvulnerable(true);
+		static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId());
+	}
 	//kill yourself!
 	//SetDoesWantToDie(true);
-	if (inPlayer->GetLocation().mX < GetLocation().mX)
+	/*if (inPlayer->GetLocation().mX < GetLocation().mX)
 	{
 		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX + GetCollisionRadius(), inPlayer->GetLocation().mY, inPlayer->GetLocation().mZ));
 	}
 	else if (inPlayer->GetLocation().mX > GetLocation().mX)
 	{
 		inPlayer->SetLocation(Vector3(inPlayer->GetLocation().mX - GetCollisionRadius(), inPlayer->GetLocation().mY, inPlayer->GetLocation().mZ));
-	}
+	}*/
 
 	/*if (inPlayer->GetLocation().mY < GetLocation().mY)
 	{
