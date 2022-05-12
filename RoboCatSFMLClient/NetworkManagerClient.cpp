@@ -51,6 +51,9 @@ void NetworkManagerClient::ProcessPacket(InputMemoryBitStream& inInputStream, co
 	case kTimerCC:
 		HandleGameTimerPacket(inInputStream);
 		break;
+	case kGameOverCC:
+		HandleGameOverPacket(inInputStream);
+		break;
 	}
 }
 
@@ -62,6 +65,13 @@ void NetworkManagerClient::HandleGameTimerPacket(InputMemoryBitStream& in_input_
 	HUD::sInstance->UpdateRemainingTime(game_timer);
 }
 
+void NetworkManagerClient::HandleGameOverPacket(InputMemoryBitStream& in_input_stream)
+{
+	bool game_over;
+	in_input_stream.Read(game_over);
+
+	HUD::sInstance->SetGameOver(game_over);
+}
 
 void NetworkManagerClient::SendOutgoingPackets()
 {

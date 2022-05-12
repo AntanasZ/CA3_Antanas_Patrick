@@ -48,7 +48,11 @@ void HUD::RenderGameTimer()
 
 void HUD::RenderGameOver()
 {
-	string game_over_string = "Sample Man won with XX score";
+	uint32_t winner_id = ScoreBoardManager::sInstance->GetWinningPlayer();
+	string winner_name = ScoreBoardManager::sInstance->GetEntry(winner_id)->GetPlayerName();
+	int winner_score = ScoreBoardManager::sInstance->GetEntry(winner_id)->GetScore();
+
+	string game_over_string = winner_name + " won with " + std::to_string(winner_score) + " score";
 	RenderText(game_over_string, m_game_over_offset, Colors::Red);
 }
 

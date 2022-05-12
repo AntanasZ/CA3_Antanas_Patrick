@@ -18,7 +18,7 @@ Server::Server() :
 	m_pickup_spawn_countdown(0.f),
 	m_enemy_spawn_countdown(0.f),
 	m_boat_spawn_countdown(0.f),
-	m_game_timer(360.f)
+	m_game_timer(100.f)
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);

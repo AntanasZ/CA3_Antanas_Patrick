@@ -140,7 +140,14 @@ void NetworkManagerServer::SendOutgoingPackets(float game_timer)
 		ClientProxyPtr clientProxy = it->second;
 		//process any timed out packets while we're going through the list
 		clientProxy->GetDeliveryNotificationManager().ProcessTimedOutPackets();
-		SendGameTimerToClient(clientProxy, game_timer);
+		if(game_timer <= 0)
+		{
+			SendGameOverPacketToClient(clientProxy);
+		}
+		else
+		{
+			SendGameTimerToClient(clientProxy, game_timer);
+		}
 
 		if (clientProxy->IsLastMoveTimestampDirty())
 		{
@@ -170,6 +177,15 @@ void NetworkManagerServer::SendGameTimerToClient(ClientProxyPtr in_client_proxy,
 	SendPacket(timerPacket, in_client_proxy->GetSocketAddress());
 }
 
+void NetworkManagerServer::SendGameOverPacketToClient(ClientProxyPtr in_client_proxy)
+{
+	OutputMemoryBitStream game_over_packet;
+
+	game_over_packet.Write(kGameOverCC);
+	game_over_packet.Write(true);
+
+	SendPacket(game_over_packet, in_client_proxy->GetSocketAddress());
+}
 
 void NetworkManagerServer::SendStatePacketToClient(ClientProxyPtr inClientProxy)
 {

@@ -41,6 +41,8 @@ public:
 	void	IncScore(uint32_t inPlayerId, int inAmount);
 	void ReduceScore(uint32_t inPlayerId, int inAmount);
 
+	const uint32_t& GetWinningPlayer();
+
 	bool	Write(OutputMemoryBitStream& inOutputStream) const;
 	bool	Read(InputMemoryBitStream& inInputStream);
 

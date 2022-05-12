@@ -14,7 +14,7 @@ public:
 	PlayerPtr	GetSharkForPlayer(int inPlayerId);
 	void	SpawnSharkForPlayer(int inPlayerId);
 
-	float GetGameTimer() { return m_game_timer; }
+	//float GetGameTimer() { return m_game_timer; }
 
 private:
 	Server();

@@ -8,6 +8,7 @@ public:
 	static const uint32_t kStateCC = 'STAT';
 	static const uint32_t kInputCC = 'INPT';
 	static const uint32_t kTimerCC = 'GTMR';
+	static const uint32_t kGameOverCC = 'OVER';
 
 	static const int kMaxPacketsPerFrameCount = 10;
 
