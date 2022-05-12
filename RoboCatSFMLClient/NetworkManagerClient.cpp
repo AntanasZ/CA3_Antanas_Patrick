@@ -48,7 +48,18 @@ void NetworkManagerClient::ProcessPacket(InputMemoryBitStream& inInputStream, co
 			HandleStatePacket(inInputStream);
 		}
 		break;
+	case kTimerCC:
+		HandleGameTimerPacket(inInputStream);
+		break;
 	}
+}
+
+void NetworkManagerClient::HandleGameTimerPacket(InputMemoryBitStream& in_input_stream)
+{
+	float game_timer;
+	in_input_stream.Read(game_timer);
+
+	HUD::sInstance->UpdateRemainingTime(game_timer);
 }
 
 

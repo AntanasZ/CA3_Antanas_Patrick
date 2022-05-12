@@ -10,17 +10,19 @@ public:
 	void Render();
 
 	void SetPlayerHealth(int inHealth) { mHealth = inHealth; }
+	
+	void UpdateRemainingTime(float remaining_time);
 
 private:
 
 	HUD();
-
+	void RenderGameTimer();
 	void	RenderBandWidth();
 	void	RenderRoundTripTime();
 	void	RenderScoreBoard();
 	void	RenderHealth();
 	void	RenderText(const string& inStr, const Vector3& origin, const Vector3& inColor);
-	void RenderGameTimer(float game_timer);
+	
 
 	Vector3										mBandwidthOrigin;
 	Vector3										mRoundTripTimeOrigin;
@@ -29,6 +31,8 @@ private:
 	Vector3										mHealthOffset;
 	Vector3 m_game_timer_offset;
 	int											mHealth;
+	int m_minutes;
+	int m_seconds;
 };
 
 

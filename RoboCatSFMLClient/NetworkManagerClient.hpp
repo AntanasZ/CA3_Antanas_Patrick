@@ -30,6 +30,7 @@ private:
 	void	HandleWelcomePacket(InputMemoryBitStream& inInputStream);
 	void	HandleStatePacket(InputMemoryBitStream& inInputStream);
 	void	ReadLastMoveProcessedOnServerTimestamp(InputMemoryBitStream& inInputStream);
+	static void HandleGameTimerPacket(InputMemoryBitStream& in_input_stream);
 
 	void	HandleGameObjectState(InputMemoryBitStream& inInputStream);
 	void	HandleScoreBoardState(InputMemoryBitStream& inInputStream);

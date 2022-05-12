@@ -10,7 +10,9 @@ HUD::HUD() :
 	mScoreOffset(0.f, 50.f, 0.0f),
 	mHealthOffset(1100.f, 10.f, 0.0f),
 	m_game_timer_offset(630.f, 10.f, 0.f),
-	mHealth(0)
+	mHealth(0),
+	m_minutes(0),
+	m_seconds(0)
 {
 }
 
@@ -26,16 +28,21 @@ void HUD::Render()
 	RenderRoundTripTime();
 	RenderScoreBoard();
 	RenderHealth();
-	RenderGameTimer(0.f);
+	RenderGameTimer();
 }
 
-void HUD::RenderGameTimer(float game_timer)
+void HUD::RenderGameTimer()
 {
-	int minutes = (int)(game_timer / 60);
-	int seconds = (int)(game_timer) % 60;
-	string game_timer_string = std::to_string(minutes) + ":" + std::to_string(seconds);
+	string game_timer_string = std::to_string(m_minutes) + ":" + std::to_string(m_seconds);
 	RenderText(game_timer_string, m_game_timer_offset, Colors::Red);
 }
+
+void HUD::UpdateRemainingTime(float remaining_time)
+{
+	m_minutes = static_cast<int>(remaining_time / 60);
+	m_seconds = static_cast<int>(remaining_time) % 60;
+}
+
 
 void HUD::RenderHealth()
 {

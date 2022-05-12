@@ -167,8 +167,6 @@ void NetworkManagerServer::SendGameTimerToClient(ClientProxyPtr in_client_proxy,
 	timerPacket.Write(kTimerCC);
 	timerPacket.Write(game_timer);
 
-	InFlightPacket* ifp = in_client_proxy->GetDeliveryNotificationManager().WriteState(timerPacket);
-
 	SendPacket(timerPacket, in_client_proxy->GetSocketAddress());
 }
 
