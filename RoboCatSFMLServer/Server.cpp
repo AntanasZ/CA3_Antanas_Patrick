@@ -17,7 +17,8 @@ Server::Server() :
 	m_rock_spawn_countdown(0.f),
 	m_pickup_spawn_countdown(0.f),
 	m_enemy_spawn_countdown(0.f),
-	m_boat_spawn_countdown(0.f)
+	m_boat_spawn_countdown(0.f),
+	m_game_timer(360.f)
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);
@@ -226,6 +227,7 @@ void Server::DoFrame()
 	m_enemy_spawn_countdown += Timing::sInstance.GetDeltaTime();
 	m_pickup_spawn_countdown += Timing::sInstance.GetDeltaTime();
 	m_boat_spawn_countdown += Timing::sInstance.GetDeltaTime();
+	m_game_timer -= Timing::sInstance.GetDeltaTime();
 
 	if (m_pickup_spawn_countdown >= 0.7f)
 	{
@@ -258,8 +260,8 @@ void Server::DoFrame()
 	NetworkManagerServer::sInstance->RespawnCats();
 
 	Engine::DoFrame();
-
-	NetworkManagerServer::sInstance->SendOutgoingPackets();
+	
+	NetworkManagerServer::sInstance->SendOutgoingPackets(m_game_timer);
 }
 
 void Server::HandleNewClient(ClientProxyPtr inClientProxy)

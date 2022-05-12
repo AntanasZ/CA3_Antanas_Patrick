@@ -8,7 +8,7 @@ public:
 	virtual void			ProcessPacket(InputMemoryBitStream& inInputStream, const SocketAddress& inFromAddress) override;
 	virtual void			HandleConnectionReset(const SocketAddress& inFromAddress) override;
 
-	void			SendOutgoingPackets();
+	void			SendOutgoingPackets(float game_timer);
 	void			CheckForDisconnects();
 
 	void			RegisterGameObject(GameObjectPtr inGameObject);
@@ -34,6 +34,7 @@ private:
 
 	void	SendStatePacketToClient(ClientProxyPtr inClientProxy);
 	void	WriteLastMoveTimestampIfDirty(OutputMemoryBitStream& inOutputStream, ClientProxyPtr inClientProxy);
+	void SendGameTimerToClient(ClientProxyPtr in_client_proxy, float game_timer);
 
 	void	HandleInputPacket(ClientProxyPtr inClientProxy, InputMemoryBitStream& inInputStream);
 

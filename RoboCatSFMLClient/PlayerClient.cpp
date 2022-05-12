@@ -25,13 +25,6 @@ void PlayerClient::Update()
 	//is this the player owned by us?
 	if (GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId())
 	{
-		/*sf::Text text;
-		text.setString("Test1111111111111111111111111111111111");
-		text.setFillColor(sf::Color(20, 150, 60, 255));
-		text.setCharacterSize(50);
-		text.setPosition(GetLocation().mX, GetLocation().mY);
-		text.setFont(*FontManager::sInstance->GetFont("carlito"));
-		WindowManager::sInstance->draw(text);*/
 		const Move* pendingMove = InputManager::sInstance->GetAndClearPendingMove();
 		//in theory, only do this if we want to sample input this frame / if there's a new move ( since we have to keep in sync with server )
 		if (pendingMove) //is it time to sample a new move...

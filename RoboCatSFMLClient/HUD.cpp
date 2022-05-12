@@ -6,10 +6,13 @@ std::unique_ptr< HUD >	HUD::sInstance;
 HUD::HUD() :
 	mScoreBoardOrigin(50.f, 60.f, 0.0f),
 	mBandwidthOrigin(50.f, 10.f, 0.0f),
-	mRoundTripTimeOrigin(580.f, 10.f, 0.0f),
+	mRoundTripTimeOrigin(370.f, 10.f, 0.0f),
 	mScoreOffset(0.f, 50.f, 0.0f),
-	mHealthOffset(1000, 10.f, 0.0f),
-	mHealth(0)
+	mHealthOffset(1100.f, 10.f, 0.0f),
+	m_game_timer_offset(630.f, 10.f, 0.f),
+	mHealth(0),
+	m_minutes(0),
+	m_seconds(0)
 {
 }
 
@@ -25,7 +28,21 @@ void HUD::Render()
 	RenderRoundTripTime();
 	RenderScoreBoard();
 	RenderHealth();
+	RenderGameTimer();
 }
+
+void HUD::RenderGameTimer()
+{
+	string game_timer_string = std::to_string(m_minutes) + ":" + std::to_string(m_seconds);
+	RenderText(game_timer_string, m_game_timer_offset, Colors::Red);
+}
+
+void HUD::UpdateRemainingTime(float remaining_time)
+{
+	m_minutes = static_cast<int>(remaining_time / 60);
+	m_seconds = static_cast<int>(remaining_time) % 60;
+}
+
 
 void HUD::RenderHealth()
 {
@@ -71,7 +88,7 @@ void HUD::RenderText(const string& inStr, const Vector3& origin, const Vector3& 
 	sf::Text text;
 	text.setString(inStr);
 	text.setFillColor(sf::Color(inColor.mX, inColor.mY, inColor.mZ, 255));
-	text.setCharacterSize(50);
+	text.setCharacterSize(30);
 	text.setPosition(origin.mX, origin.mY);
 	text.setFont(*FontManager::sInstance->GetFont("carlito"));
 	WindowManager::sInstance->draw(text);
