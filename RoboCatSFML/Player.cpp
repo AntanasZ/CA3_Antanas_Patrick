@@ -95,11 +95,8 @@ bool Player::GetInvulnerable()
 	return mIsInvulnerable;
 }
 
-
-
 void Player::Update()
 {
-	
 }
 
 void Player::ProcessCollisions()
@@ -237,11 +234,17 @@ uint32_t Player::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 		inOutputStream.Write(velocity.mX);
 		inOutputStream.Write(velocity.mY);
 
+		Vector3 velocityLeftRight = mVelocityLeftRight;
+		inOutputStream.Write(mVelocityLeftRight.mX);
+		inOutputStream.Write(mVelocityLeftRight.mY);
+
 		Vector3 location = GetLocation();
 		inOutputStream.Write(location.mX);
 		inOutputStream.Write(location.mY);
 
 		inOutputStream.Write(GetRotation());
+
+		inOutputStream.Write(IsFacingRight());
 
 		writtenState |= ECRS_Pose;
 	}

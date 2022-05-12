@@ -11,6 +11,7 @@ public:
 
 	void SetTexture(TexturePtr inTexture);
 	virtual sf::Sprite& GetSprite();
+	GameObject* GetGameObject() { return mGameObject; }
 	
 
 

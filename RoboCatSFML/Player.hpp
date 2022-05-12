@@ -32,7 +32,9 @@ public:
 	uint32_t	GetPlayerId()						const { return mPlayerId; }
 
 	void			SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
+	void			SetVelocityLeftRight(const Vector3& inVelocity) { mVelocityLeftRight = inVelocity; }
 	const Vector3& GetVelocity()						const { return mVelocity; }
+	const Vector3& GetVelocityLeftRight()						const { return mVelocityLeftRight; }
 	void Accelerate(const Vector3 inVelocity) { mVelocity += inVelocity; }
 
 	void SetInvulnerable(bool value);
@@ -58,7 +60,6 @@ private:
 	//bounce fraction when hitting various things
 	float				mWallRestitution;
 	float				mPlayerRestitution;
-
 
 	uint32_t			mPlayerId;
 

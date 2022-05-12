@@ -74,10 +74,14 @@ void PlayerClient::Read(InputMemoryBitStream& inInputStream)
 	float oldRotation = GetRotation();
 	Vector3 oldLocation = GetLocation();
 	Vector3 oldVelocity = GetVelocity();
+	Vector3 oldVelocityLeftRight = GetVelocityLeftRight();
+	bool oldFacingPosition = IsFacingRight();
 
 	float replicatedRotation;
 	Vector3 replicatedLocation;
 	Vector3 replicatedVelocity;
+	Vector3 replicatedVelocityLeftRight;
+	bool replicatedFacingPosition;
 
 	inInputStream.Read(stateBit);
 	if (stateBit)
@@ -87,6 +91,11 @@ void PlayerClient::Read(InputMemoryBitStream& inInputStream)
 
 		SetVelocity(replicatedVelocity);
 
+		inInputStream.Read(replicatedVelocityLeftRight.mX);
+		inInputStream.Read(replicatedVelocityLeftRight.mY);
+
+		SetVelocityLeftRight(replicatedVelocityLeftRight);
+
 		inInputStream.Read(replicatedLocation.mX);
 		inInputStream.Read(replicatedLocation.mY);
 
@@ -94,6 +103,9 @@ void PlayerClient::Read(InputMemoryBitStream& inInputStream)
 
 		inInputStream.Read(replicatedRotation);
 		SetRotation(replicatedRotation);
+
+		inInputStream.Read(replicatedFacingPosition);
+		SetFacingRight(replicatedFacingPosition);
 
 		readState |= ECRS_Pose;
 	}
