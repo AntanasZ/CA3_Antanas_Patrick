@@ -18,6 +18,8 @@
 #include "RockClient.hpp"
 #include "BoatClient.hpp"
 
+#include "MenuState.hpp"
+
 #include "HUD.hpp"
 
 

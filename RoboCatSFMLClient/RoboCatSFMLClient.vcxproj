@@ -20,11 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoatClient.hpp" />
+    <ClInclude Include="Button.hpp" />
+    <ClInclude Include="ButtonType.hpp" />
     <ClInclude Include="Client.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Container.hpp" />
     <ClInclude Include="EnemyClient.hpp" />
     <ClInclude Include="FontManager.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="MenuState.hpp" />
     <ClInclude Include="PickupClient.hpp" />
     <ClInclude Include="NetworkManagerClient.hpp" />
     <ClInclude Include="PlatformClient.hpp" />
@@ -41,12 +46,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoatClient.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="EnemyClient.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="PickupClient.cpp" />
     <ClCompile Include="NetworkManagerClient.cpp" />
     <ClCompile Include="PlatformClient.cpp" />

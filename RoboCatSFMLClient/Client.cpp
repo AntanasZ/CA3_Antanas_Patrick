@@ -11,6 +11,7 @@ bool Client::StaticInit()
 	TextureManager::StaticInit();
 	RenderManager::StaticInit();
 	
+	MenuState::StaticInit();
 
 	HUD::StaticInit();
 
@@ -36,7 +37,7 @@ Client::Client()
 
 	NetworkManagerClient::StaticInit(*serverAddress, name);
 
-	//NetworkManagerClient::sInstance->SetSimulatedLatency(0.0f);
+	NetworkManagerClient::sInstance->SetSimulatedLatency(0.0f);
 }
 
 
