@@ -10,9 +10,11 @@ HUD::HUD() :
 	mScoreOffset(0.f, 50.f, 0.0f),
 	mHealthOffset(1100.f, 10.f, 0.0f),
 	m_game_timer_offset(630.f, 10.f, 0.f),
+	m_game_over_offset(480.f, 50.f, 0.f),
 	mHealth(0),
 	m_minutes(0),
-	m_seconds(0)
+	m_seconds(0),
+	m_is_game_over(false)
 {
 }
 
@@ -28,7 +30,14 @@ void HUD::Render()
 	RenderRoundTripTime();
 	RenderScoreBoard();
 	RenderHealth();
-	RenderGameTimer();
+	if(!m_is_game_over)
+	{
+		RenderGameTimer();
+	}
+	else
+	{
+		RenderGameOver();
+	}
 }
 
 void HUD::RenderGameTimer()
@@ -36,6 +45,13 @@ void HUD::RenderGameTimer()
 	string game_timer_string = std::to_string(m_minutes) + ":" + std::to_string(m_seconds);
 	RenderText(game_timer_string, m_game_timer_offset, Colors::Red);
 }
+
+void HUD::RenderGameOver()
+{
+	string game_over_string = "Sample Man won with XX score";
+	RenderText(game_over_string, m_game_over_offset, Colors::Red);
+}
+
 
 void HUD::UpdateRemainingTime(float remaining_time)
 {
