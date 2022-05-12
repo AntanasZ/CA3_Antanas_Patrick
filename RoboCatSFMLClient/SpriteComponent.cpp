@@ -31,7 +31,7 @@ sf::Sprite& SpriteComponent::GetSprite()
 	m_sprite.setPosition(pos.mX, pos.mY);
 	m_sprite.setRotation(rot);
 
-	if (sca > 0)
+	/*if (sca > 0)
 	{
 		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
 	}
@@ -39,6 +39,18 @@ sf::Sprite& SpriteComponent::GetSprite()
 	{
 		m_sprite.scale(-1.f, 1.f);
 		mGameObject->SetSpriteUpdated(true);
+	}*/
+
+	//mGameObject->SetScale(pickup->GetScale() * -1.f);
+
+	if (!mGameObject->IsFacingRight() && sca > 0)
+	{
+		m_sprite.scale(-1.f, 1.f);
+		mGameObject->SetScale(sca * -1.f);
+	}
+	else if(mGameObject->IsFacingRight())
+	{
+		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
 	}
 
 	return m_sprite;

@@ -35,7 +35,7 @@ uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 
 		inOutputStream.Write(GetScale());
 
-		inOutputStream.Write(GetSpriteUpdated());
+		inOutputStream.Write(IsFacingRight());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -82,9 +82,9 @@ void Enemy::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(scale);
 		SetScale(scale);
 
-		bool spriteUpdated;
-		inInputStream.Read(spriteUpdated);
-		SetSpriteUpdated(spriteUpdated);
+		bool facingRight;
+		inInputStream.Read(facingRight);
+		SetFacingRight(facingRight);
 	}
 
 

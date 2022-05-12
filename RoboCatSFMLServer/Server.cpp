@@ -93,7 +93,7 @@ namespace
 		{
 			pickupLocation.mX = 1290;
 			pickupVelocity = Vector3(-250.f, 0.f, 0);
-			pickup->SetScale(pickup->GetScale() * -1.f);
+			pickup->SetFacingRight(false);
 		}
 
 		pickup->SetLocation(pickupLocation);
@@ -122,7 +122,7 @@ namespace
 		{
 			enemyLocation.mX = 1290;
 			enemyVelocity = Vector3(-250.f, 0.f, 0);
-			enemy->SetScale(enemy->GetScale() * -1.f);
+			enemy->SetFacingRight(false);
 		}
 		enemy->SetLocation(enemyLocation);
 		enemy->SetVelocity(enemyVelocity);
@@ -158,7 +158,7 @@ namespace
 		{
 			boatLocation.mX = 1290;
 			boatVelocity = Vector3(-350.f, 0.f, 0);
-			boat->SetScale(boat->GetScale() * -1.f);
+			boat->SetFacingRight(false);
 		}
 
 		boat->SetLocation(boatLocation);

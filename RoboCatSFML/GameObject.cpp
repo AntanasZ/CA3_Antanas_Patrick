@@ -8,7 +8,7 @@ GameObject::GameObject() :
 	mNetworkId(0),
 	mColor(Colors::White),
 	mScale(1.0f),
-	mSpriteUpdated(false)
+	mFacingRight(true)
 {
 }
 
