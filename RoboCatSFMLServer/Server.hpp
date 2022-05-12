@@ -14,6 +14,7 @@ public:
 	PlayerPtr	GetSharkForPlayer(int inPlayerId);
 	void	SpawnSharkForPlayer(int inPlayerId);
 
+	float GetGameTimer() { return m_game_timer; }
 
 private:
 	Server();
@@ -31,5 +32,6 @@ private:
 	float m_enemy_spawn_countdown;
 	float m_rock_spawn_countdown;
 	float m_boat_spawn_countdown;
+	float m_game_timer;
 };
 

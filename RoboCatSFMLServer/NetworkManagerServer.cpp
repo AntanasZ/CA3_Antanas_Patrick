@@ -132,7 +132,7 @@ void NetworkManagerServer::RespawnCats()
 	}
 }
 
-void NetworkManagerServer::SendOutgoingPackets()
+void NetworkManagerServer::SendOutgoingPackets(float game_timer)
 {
 	//let's send a client a state packet whenever their move has come in...
 	for (auto it = mAddressToClientMap.begin(), end = mAddressToClientMap.end(); it != end; ++it)
@@ -140,6 +140,7 @@ void NetworkManagerServer::SendOutgoingPackets()
 		ClientProxyPtr clientProxy = it->second;
 		//process any timed out packets while we're going through the list
 		clientProxy->GetDeliveryNotificationManager().ProcessTimedOutPackets();
+		SendGameTimerToClient(clientProxy, game_timer);
 
 		if (clientProxy->IsLastMoveTimestampDirty())
 		{
@@ -158,6 +159,19 @@ void NetworkManagerServer::UpdateAllClients()
 		SendStatePacketToClient(it->second);
 	}
 }
+
+void NetworkManagerServer::SendGameTimerToClient(ClientProxyPtr in_client_proxy, float game_timer)
+{
+	OutputMemoryBitStream timerPacket;
+
+	timerPacket.Write(kTimerCC);
+	timerPacket.Write(game_timer);
+
+	InFlightPacket* ifp = in_client_proxy->GetDeliveryNotificationManager().WriteState(timerPacket);
+
+	SendPacket(timerPacket, in_client_proxy->GetSocketAddress());
+}
+
 
 void NetworkManagerServer::SendStatePacketToClient(ClientProxyPtr inClientProxy)
 {
