@@ -35,6 +35,7 @@ private:
 	void	SendStatePacketToClient(ClientProxyPtr inClientProxy);
 	void	WriteLastMoveTimestampIfDirty(OutputMemoryBitStream& inOutputStream, ClientProxyPtr inClientProxy);
 	void SendGameTimerToClient(ClientProxyPtr in_client_proxy, float game_timer);
+	void SendGameOverPacketToClient(ClientProxyPtr in_client_proxy);
 
 	void	HandleInputPacket(ClientProxyPtr inClientProxy, InputMemoryBitStream& inInputStream);
 

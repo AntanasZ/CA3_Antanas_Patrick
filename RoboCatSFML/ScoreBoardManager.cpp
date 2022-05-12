@@ -86,6 +86,23 @@ void ScoreBoardManager::AddEntry(uint32_t inPlayerId, const string& inPlayerName
 	mEntries.emplace_back(inPlayerId, inPlayerName, mDefaultColors[inPlayerId % mDefaultColors.size()]);
 }
 
+const uint32_t& ScoreBoardManager::GetWinningPlayer()
+{
+	uint32_t winner_id = 0;
+	int max_score = 0;
+
+	for(auto player : mEntries)
+	{
+		if(player.GetScore() > max_score)
+		{
+			max_score = player.GetScore();
+			winner_id = player.GetPlayerId();
+		}
+	}
+
+	return winner_id;
+}
+
 void ScoreBoardManager::IncScore(uint32_t inPlayerId, int inAmount)
 {
 	Entry* entry = GetEntry(inPlayerId);
