@@ -61,7 +61,6 @@ private:
 	float				mWallRestitution;
 	float				mPlayerRestitution;
 
-
 	uint32_t			mPlayerId;
 
 protected:

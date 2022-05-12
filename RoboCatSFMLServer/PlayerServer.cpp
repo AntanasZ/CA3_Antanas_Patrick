@@ -49,7 +49,14 @@ void PlayerServer::Update()
 		SimulateMovement(Timing::sInstance.GetDeltaTime());
 	}
 	
-
+	if (GetVelocityLeftRight().mX > 0)
+	{
+		SetFacingRight(true);
+	}
+	else if (GetVelocityLeftRight().mX < 0)
+	{
+		SetFacingRight(false);
+	}
 
 	HandleShooting();
 

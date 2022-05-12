@@ -18,17 +18,16 @@ sf::Sprite& PlayerSpriteComponent::GetSprite()
 	Vector3 playerColor = player->GetColor();
 	m_sprite.setColor(sf::Color(playerColor.mX, playerColor.mY, playerColor.mZ, 255));
 
-	if (!mGameObject->IsFacingRight() && vel.mX > 0)
+	if (!player->IsFacingRight() && sca > 0)
 	{
 		m_sprite.scale(-1.f, 1.f);
-		player->SetFacingRight(true);
-		//player->SetScale(sca * -1.f);
+		mGameObject->SetScale(sca * -1.f);
 	}
-	else if (mGameObject->IsFacingRight() && vel.mX < 0)
+	else if (player->IsFacingRight() && sca < 0)
 	{
 		m_sprite.scale(-1.f, 1.f);
-		player->SetFacingRight(false);
-		//m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
+		mGameObject->SetScale(sca * -1.f);
+		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
 	}
 
 	return m_sprite;

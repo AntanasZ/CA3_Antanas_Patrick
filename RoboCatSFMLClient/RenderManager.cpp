@@ -58,6 +58,7 @@ void RenderManager::RenderComponents()
 	for (SpriteComponent* c : mComponents)
 	{	
 		WindowManager::sInstance->draw(c->GetSprite());	
+		WindowManager::sInstance->draw(c->GetSprite());	
 	}
 }
 
