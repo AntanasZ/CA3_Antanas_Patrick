@@ -179,6 +179,8 @@ void Player::ProcessCollisionsWithScreenWalls()
 	float vx = mVelocity.mX;
 	float vy = mVelocity.mY;
 
+	float vxLeftRight = mVelocityLeftRight.mX;
+
 	float radius = GetCollisionRadius();
 
 	//if the player collides against a wall, the quick solution is to push it off
@@ -195,13 +197,13 @@ void Player::ProcessCollisionsWithScreenWalls()
 		SetLocation(location);
 	}
 
-	if ((x + radius) >= WORLD_WIDTH && vx > 0)
+	if ((x + radius) >= WORLD_WIDTH && vxLeftRight > 0)
 	{
 		mVelocity.mX = -vx * mWallRestitution;
 		location.mX = WORLD_WIDTH - radius;
 		SetLocation(location);
 	}
-	else if (x - radius <= 0 && vx < 0)
+	else if (x - radius <= 0 && vxLeftRight < 0)
 	{
 		mVelocity.mX = -vx * mWallRestitution;
 		location.mX = radius;
