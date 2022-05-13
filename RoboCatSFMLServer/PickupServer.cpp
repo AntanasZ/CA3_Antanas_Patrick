@@ -19,6 +19,9 @@ bool PickupServer::HandleCollisionWithPlayer(Player* inPlayer)
 
 	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 1);
 
+	//Make the shark grow 1% bigger
+	inPlayer->SetScale(inPlayer->GetScale() * 1.01f);
+
 	return false;
 }
 

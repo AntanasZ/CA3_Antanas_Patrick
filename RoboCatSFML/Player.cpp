@@ -244,6 +244,8 @@ uint32_t Player::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 
 		inOutputStream.Write(GetRotation());
 
+		inOutputStream.Write(GetScale());
+
 		inOutputStream.Write(IsFacingRight());
 
 		writtenState |= ECRS_Pose;
