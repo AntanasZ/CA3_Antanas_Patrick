@@ -19,7 +19,7 @@ Player::Player() :
 	mInvulnerabilityCountdown(0.f),
 	mIsInvulnerable(false)
 {
-	SetCollisionRadius(50.f);
+	SetCollisionRadius(48.f);
 }
 
 void Player::ProcessInput(float inDeltaTime, const InputState& inInputState)
