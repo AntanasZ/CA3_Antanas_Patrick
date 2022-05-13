@@ -5,6 +5,10 @@ EnemyServer::EnemyServer()
 {
 	//enemy lives 4 seconds...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
+
+	sf::Int8 randomSprite = rand() % 3 + 1;
+
+	this->SetSpriteNumber(randomSprite);
 }
 
 void EnemyServer::HandleDying()

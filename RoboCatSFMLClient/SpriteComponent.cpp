@@ -22,6 +22,52 @@ void SpriteComponent::SetTexture(TexturePtr inTexture)
 	m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
 }
 
+void SpriteComponent::UpdateTexture()
+{
+	Pickup* pickup = mGameObject->GetAsPickup();
+	Enemy* enemy = mGameObject->GetAsEnemy();
+
+	if (pickup)
+	{
+		switch (pickup->GetSpriteNumber())
+		{
+		case 1:
+			SetTexture(TextureManager::sInstance->GetTexture("fish1"));
+			break;
+		case 2:
+			SetTexture(TextureManager::sInstance->GetTexture("fish2"));
+			break;
+		case 3:
+			SetTexture(TextureManager::sInstance->GetTexture("fish3"));
+			break;
+		case 4:
+			SetTexture(TextureManager::sInstance->GetTexture("fish4"));
+			break;
+		case 5:
+			SetTexture(TextureManager::sInstance->GetTexture("fish5"));
+			break;
+		case 6:
+			SetTexture(TextureManager::sInstance->GetTexture("fish6"));
+			break;
+		}
+	}
+	else if (enemy)
+	{
+		switch (enemy->GetSpriteNumber())
+		{
+		case 1:
+			SetTexture(TextureManager::sInstance->GetTexture("orca"));
+			break;
+		case 2:
+			SetTexture(TextureManager::sInstance->GetTexture("octopus"));
+			break;
+		case 3:
+			SetTexture(TextureManager::sInstance->GetTexture("diver"));
+			break;
+		}
+	}
+}
+
 sf::Sprite& SpriteComponent::GetSprite()
 {
 	// Update the sprite based on the game object stuff.

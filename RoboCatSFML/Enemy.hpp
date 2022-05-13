@@ -25,11 +25,15 @@ public:
 	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
 	const Vector3& GetVelocity() const { return mVelocity; }
 
+	void SetSpriteNumber(const sf::Int8& inNumber) { mSpriteNumber = inNumber; }
+	const sf::Int8& GetSpriteNumber() const { return mSpriteNumber; }
+
 protected:
 	Enemy();
 
 private:
 	Vector3	mVelocity;
+	sf::Int8 mSpriteNumber;
 };
 
 typedef shared_ptr< Enemy >	EnemyPtr;

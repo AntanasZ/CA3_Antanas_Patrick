@@ -33,6 +33,8 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 		inOutputStream.Write(GetScale());
 
 		inOutputStream.Write(IsFacingRight());
+		
+		inOutputStream.Write(GetSpriteNumber);
 
 		writtenState |= EMRS_Pose;
 	}
@@ -82,6 +84,10 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 		bool facingRight;
 		inInputStream.Read(facingRight);
 		SetFacingRight(facingRight);
+
+		sf::Int8 spriteNumber;
+		inInputStream.Read(spriteNumber);
+		SetFacingRight(spriteNumber);
 	}
 
 

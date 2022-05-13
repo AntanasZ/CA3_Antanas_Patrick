@@ -5,6 +5,10 @@ PickupServer::PickupServer()
 {
 	//pickup lives 5.5 seconds...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
+
+	sf::Int8 randomSprite = rand() % 6 + 1;
+
+	this->SetSpriteNumber(randomSprite);
 }
 
 void PickupServer::HandleDying()

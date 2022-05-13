@@ -12,6 +12,8 @@ public:
 	virtual ~GameObject() {}
 
 	virtual Player* GetAsPlayer() { return nullptr; }
+	virtual Pickup* GetAsPickup() { return nullptr; }
+	virtual Enemy* GetAsEnemy() { return nullptr; }
 
 	virtual uint32_t GetAllStateMask() const { return 0; }
 
