@@ -14,7 +14,7 @@ public:
 
 	void SetSharkControlType(ESharkControlType inSharkControlType) { mSharkControlType = inSharkControlType; }
 
-	void TakeDamage(int inDamagingPlayerId);
+	void TakeDamage(int inDamagingPlayerId, int damage_amount);
 
 protected:
 	PlayerServer();

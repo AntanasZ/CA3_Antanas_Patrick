@@ -82,9 +82,9 @@ void PlayerServer::HandleShooting()
 	}
 }
 
-void PlayerServer::TakeDamage(int inDamagingPlayerId)
+void PlayerServer::TakeDamage(int inDamagingPlayerId, int damage_amount)
 {
-	mHealth--;
+	mHealth -= damage_amount;
 	ScoreBoardManager::sInstance->ReduceScore(GetPlayerId(), 5);
 	if (mHealth <= 0.f)
 	{
