@@ -29,7 +29,6 @@ void SpriteComponent::SetTexture(TexturePtr inTexture, bool resetting)
 void SpriteComponent::UpdateTexture()
 {
 	Pickup* pickup = mGameObject->GetAsPickup();
-	Enemy* enemy = mGameObject->GetAsEnemy();
 
 	mHasResetSprite = true;
 
@@ -54,21 +53,6 @@ void SpriteComponent::UpdateTexture()
 			break;
 		case 6:
 			SetTexture(TextureManager::sInstance->GetTexture("fish6"), true);
-			break;
-		}
-	}
-	else if (enemy)
-	{
-		switch (enemy->GetSpriteNumber())
-		{
-		case 1:
-			SetTexture(TextureManager::sInstance->GetTexture("orca"), true);
-			break;
-		case 2:
-			SetTexture(TextureManager::sInstance->GetTexture("octopus"), true);
-			break;
-		case 3:
-			SetTexture(TextureManager::sInstance->GetTexture("diver"), true);
 			break;
 		}
 	}

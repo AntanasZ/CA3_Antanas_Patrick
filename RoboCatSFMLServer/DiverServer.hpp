@@ -1,13 +1,13 @@
-class EnemyServer : public Enemy
+class DiverServer : public Diver
 {
 public:
-	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new EnemyServer()); }
+	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new DiverServer()); }
 	void HandleDying() override;
 	virtual bool HandleCollisionWithPlayer(Player* inPlayer) override;
 	virtual void Update() override;
 
 protected:
-	EnemyServer();
+	DiverServer();
 
 private:
 	float mTimeToDie;

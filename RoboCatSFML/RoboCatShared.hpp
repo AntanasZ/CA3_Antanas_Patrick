@@ -47,7 +47,9 @@ using std::string;
 using std::unordered_set;
 
 class Player;
-class Enemy;
+class Orca;
+class Diver;
+class Octopus;
 class Pickup;
 class Boat;
 class GameObject;
@@ -87,7 +89,9 @@ class GameObject;
 #include "Timing.hpp"
 #include "Pickup.hpp"
 #include "Projectile.hpp"
-#include "Enemy.hpp"
+#include "Orca.hpp"
+#include "Diver.hpp"
+#include "Octopus.hpp"
 #include "Platform.hpp"
 #include "Rock.hpp"
 #include "Boat.hpp"

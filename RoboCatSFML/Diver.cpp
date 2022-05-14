@@ -1,23 +1,23 @@
 #include "RoboCatPCH.hpp"
 
-Enemy::Enemy()
+Diver::Diver()
 {
-	SetScale(GetScale() * 0.5f);
-	SetCollisionRadius(20.f);
+	SetScale(GetScale() * 0.4f);
+	SetCollisionRadius(19.f);
 
 	//Add initial velocity to enemy
-	SetVelocity(Vector3(0.f, 0.f, 0));
+	SetVelocity(Vector3(220.f, 0.f, 0));
 }
 
 
-bool Enemy::HandleCollisionWithPlayer(Player* inPlayer)
+bool Diver::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	(void)inPlayer;
 	return false;
 }
 
 
-uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Diver::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
@@ -36,8 +36,6 @@ uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 		inOutputStream.Write(GetScale());
 
 		inOutputStream.Write(IsFacingRight());
-
-		inOutputStream.Write(GetSpriteNumber());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -63,7 +61,7 @@ uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 	return writtenState;
 }
 
-void Enemy::Read(InputMemoryBitStream& inInputStream)
+void Diver::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 
@@ -87,10 +85,6 @@ void Enemy::Read(InputMemoryBitStream& inInputStream)
 		bool facingRight;
 		inInputStream.Read(facingRight);
 		SetFacingRight(facingRight);
-
-		sf::Int8 spriteNumber;
-		inInputStream.Read(spriteNumber);
-		SetSpriteNumber(spriteNumber);
 	}
 
 
@@ -103,7 +97,7 @@ void Enemy::Read(InputMemoryBitStream& inInputStream)
 	}
 }
 
-void Enemy::Update()
+void Diver::Update()
 {
 	float deltaTime = Timing::sInstance.GetDeltaTime();
 	SetLocation(GetLocation() + mVelocity * deltaTime);

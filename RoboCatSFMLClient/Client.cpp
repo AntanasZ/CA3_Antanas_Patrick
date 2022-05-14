@@ -24,7 +24,9 @@ Client::Client()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileClient::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ORCA', OrcaClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('DIVE', DiverClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('OCTO', OctopusClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ROCK', RockClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('BOAT', BoatClient::StaticCreate);

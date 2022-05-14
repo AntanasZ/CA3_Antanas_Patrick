@@ -24,7 +24,9 @@ Server::Server() :
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAY', PlayerServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PICK', PickupServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PROJ', ProjectileServer::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('ENEM', EnemyServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ORCA', OrcaServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('DIVE', DiverServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('OCTO', OctopusServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('PLAT', PlatformServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('ROCK', RockServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('BOAT', BoatServer::StaticCreate);
@@ -77,7 +79,6 @@ namespace
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		Vector3 pickupVelocity;
 		sf::Int8 randomPosition;
-		GameObjectPtr go;
 
 		Vector3 pickupLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
 
@@ -101,18 +102,18 @@ namespace
 		pickup->SetVelocity(pickupVelocity);		
 	}
 
-	void CreateRandomEnemy()
+	void CreateRandomOrca()
 	{
 		Vector3 pickupMin(0.f, 40.f, 0.f);
 		Vector3 pickupMax(0.f, 700.f, 0.f);
 		sf::Int8 randomPosition;
-		Vector3 enemyVelocity;
 
 		randomPosition = rand() % 2 + 1;
 
 		Vector3 enemyLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
 
-		EnemyPtr enemy = std::static_pointer_cast<Enemy>(GameObjectRegistry::sInstance->CreateGameObject('ENEM'));
+		OrcaPtr orca = std::static_pointer_cast<Orca>(GameObjectRegistry::sInstance->CreateGameObject('ORCA'));
+		Vector3 enemyVelocity = orca->GetVelocity();
 
 		if (randomPosition == 1)
 		{
@@ -122,12 +123,64 @@ namespace
 		else
 		{
 			enemyLocation.mX = 1290;
-			enemyVelocity = Vector3(-250.f, 0.f, 0);
-			enemy->SetFacingRight(false);
+			orca->SetVelocity(Vector3(-1.f * enemyVelocity.mX, 0.f, 0.f));
+			orca->SetFacingRight(false);
 		}
-		enemy->SetLocation(enemyLocation);
-		enemy->SetVelocity(enemyVelocity);
+		orca->SetLocation(enemyLocation);
 	}
+
+	void CreateRandomDiver()
+	{
+		Vector3 pickupMin(0.f, 40.f, 0.f);
+		Vector3 pickupMax(0.f, 700.f, 0.f);
+		sf::Int8 randomPosition;
+
+		randomPosition = rand() % 2 + 1;
+
+		Vector3 enemyLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
+
+		DiverPtr diver = std::static_pointer_cast<Diver>(GameObjectRegistry::sInstance->CreateGameObject('DIVE'));
+		Vector3 enemyVelocity = diver->GetVelocity();
+
+		if (randomPosition == 1)
+		{
+			enemyLocation.mX = -20;
+			enemyVelocity = Vector3(250.f, 0.f, 0);
+		}
+		else
+		{
+			enemyLocation.mX = 1290;
+			diver->SetVelocity(Vector3(-1.f * enemyVelocity.mX, 0.f, 0.f));
+			diver->SetFacingRight(false);
+		}
+
+		diver->SetLocation(enemyLocation);
+	}
+
+	void CreateRandomOctopus()
+	{
+		Vector3 pickupMin(0.f, 40.f, 0.f);
+		Vector3 pickupMax(0.f, 700.f, 0.f);
+		sf::Int8 randomPosition;
+
+		randomPosition = rand() % 2 + 1;
+
+		Vector3 enemyLocation = RoboMath::GetRandomVector(pickupMin, pickupMax);
+
+		OctopusPtr octopus = std::static_pointer_cast<Octopus>(GameObjectRegistry::sInstance->CreateGameObject('OCTO'));
+		Vector3 enemyVelocity = octopus->GetVelocity();
+
+		if (randomPosition == 1)
+		{
+			enemyLocation.mX = -20;
+		}
+		else
+		{
+			enemyLocation.mX = 1290;
+			octopus->SetVelocity(Vector3(-1.f * enemyVelocity.mX, 0.f, 0.f));
+			octopus->SetFacingRight(false);
+		}
+		octopus->SetLocation(enemyLocation);	}
 
 	void CreateRandomRock()
 	{
@@ -238,7 +291,22 @@ void Server::DoFrame()
 	if (m_enemy_spawn_countdown >= 6.5f)
 	{
 		m_enemy_spawn_countdown = 0.f;
-		CreateRandomEnemy();
+		
+		sf::Int8 randomEnemy;
+		randomEnemy = rand() % 3 + 1;
+
+		if (randomEnemy == 1)
+		{
+			CreateRandomOrca();
+		}
+		else if (randomEnemy == 2)
+		{
+			CreateRandomDiver();
+		}
+		else
+		{
+			CreateRandomOctopus();
+		}
 	}
 
 	if (m_rock_spawn_countdown >= 6.f)

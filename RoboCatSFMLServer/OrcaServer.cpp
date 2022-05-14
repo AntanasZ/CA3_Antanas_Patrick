@@ -1,23 +1,19 @@
 #include "RoboCatServerPCH.hpp"
 
 
-EnemyServer::EnemyServer()
+OrcaServer::OrcaServer()
 {
-	//enemy lives 4 seconds...
+	//orca lives 5.5 seconds...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
-
-	sf::Int8 randomSprite = rand() % 3 + 1;
-
-	SetSpriteNumber(randomSprite);
 }
 
-void EnemyServer::HandleDying()
+void OrcaServer::HandleDying()
 {
 	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
 
-bool EnemyServer::HandleCollisionWithPlayer(Player* inPlayer)
+bool OrcaServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
 	//SetDoesWantToDie(true);
@@ -33,9 +29,9 @@ bool EnemyServer::HandleCollisionWithPlayer(Player* inPlayer)
 	return false;
 }
 
-void EnemyServer::Update()
+void OrcaServer::Update()
 {
-	Enemy::Update();
+	Orca::Update();
 
 	if (Timing::sInstance.GetFrameStartTime() > mTimeToDie)
 	{

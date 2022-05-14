@@ -158,7 +158,9 @@
   <ItemGroup>
     <ClInclude Include="BoatServer.hpp" />
     <ClInclude Include="ClientProxy.hpp" />
-    <ClInclude Include="EnemyServer.hpp" />
+    <ClInclude Include="DiverServer.hpp" />
+    <ClInclude Include="OctopusServer.hpp" />
+    <ClInclude Include="OrcaServer.hpp" />
     <ClInclude Include="PickupServer.hpp" />
     <ClInclude Include="NetworkManagerServer.hpp" />
     <ClInclude Include="PlatformServer.hpp" />
@@ -173,7 +175,9 @@
   <ItemGroup>
     <ClCompile Include="BoatServer.cpp" />
     <ClCompile Include="ClientProxy.cpp" />
-    <ClCompile Include="EnemyServer.cpp" />
+    <ClCompile Include="DiverServer.cpp" />
+    <ClCompile Include="OctopusServer.cpp" />
+    <ClCompile Include="OrcaServer.cpp" />
     <ClCompile Include="PickupServer.cpp" />
     <ClCompile Include="NetworkManagerServer.cpp" />
     <ClCompile Include="PlatformServer.cpp" />

@@ -1,6 +1,6 @@
 #include "RoboCatClientPCH.hpp"
 
-EnemyClient::EnemyClient()
+OrcaClient::OrcaClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 

@@ -1,9 +1,9 @@
-class Enemy : public GameObject
+class Diver : public GameObject
 {
 public:
-	CLASS_IDENTIFICATION('ENEM', GameObject)
+	CLASS_IDENTIFICATION('DIVE', GameObject)
 
-	enum EEnemyReplicationState
+	enum EDiverReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,
@@ -11,9 +11,9 @@ public:
 		EMRS_AllState = EMRS_Pose | EMRS_Color
 	};
 
-	static	GameObject* StaticCreate() { return new Enemy(); }
+	static	GameObject* StaticCreate() { return new Diver(); }
 
-	virtual	Enemy* GetAsEnemy() override { return this; }
+	virtual	Diver* GetAsDiver() override { return this; }
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 
@@ -27,17 +27,13 @@ public:
 	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
 	const Vector3& GetVelocity() const { return mVelocity; }
 
-	void SetSpriteNumber(const sf::Int8& inNumber) { mSpriteNumber = inNumber; }
-	const sf::Int8& GetSpriteNumber() const { return mSpriteNumber; }
-
 protected:
-	Enemy();
+	Diver();
 
 private:
 	Vector3	mVelocity;
-	sf::Int8 mSpriteNumber;
 };
 
-typedef shared_ptr< Enemy >	EnemyPtr;
+typedef shared_ptr< Diver >	DiverPtr;
 
 
