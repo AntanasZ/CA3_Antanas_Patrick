@@ -1,9 +1,9 @@
-class Pickup : public GameObject
+class Orca : public GameObject
 {
 public:
-	CLASS_IDENTIFICATION('PICK', GameObject)
+	CLASS_IDENTIFICATION('ORCA', GameObject)
 
-	enum EPickupReplicationState
+	enum EOrcaReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,
@@ -11,9 +11,9 @@ public:
 		EMRS_AllState = EMRS_Pose | EMRS_Color
 	};
 
-	static	GameObject* StaticCreate() { return new Pickup(); }
+	static	GameObject* StaticCreate() { return new Orca(); }
 
-	virtual	Pickup* GetAsPickup() override { return this; }
+	virtual	Orca* GetAsOrca() override { return this; }
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 
@@ -27,15 +27,13 @@ public:
 	void SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
 	const Vector3& GetVelocity() const { return mVelocity; }
 
-	void SetSpriteNumber(const sf::Int8& inNumber) { mSpriteNumber = inNumber; }
-	const sf::Int8& GetSpriteNumber() const { return mSpriteNumber; }
-
 protected:
-	Pickup();
+	Orca();
 
 private:
 	Vector3	mVelocity;
-	sf::Int8 mSpriteNumber;
 };
 
-typedef shared_ptr< Pickup >	PickupPtr;
+typedef shared_ptr< Orca >	OrcaPtr;
+
+

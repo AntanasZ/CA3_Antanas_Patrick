@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClInclude Include="BoatClient.hpp" />
     <ClInclude Include="Client.hpp" />
-    <ClInclude Include="EnemyClient.hpp" />
+    <ClInclude Include="DiverClient.hpp" />
+    <ClInclude Include="OctopusClient.hpp" />
+    <ClInclude Include="OrcaClient.hpp" />
     <ClInclude Include="FontManager.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="InputManager.hpp" />
@@ -43,7 +45,9 @@
     <ClCompile Include="BoatClient.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />
-    <ClCompile Include="EnemyClient.cpp" />
+    <ClCompile Include="DiverClient.cpp" />
+    <ClCompile Include="OctopusClient.cpp" />
+    <ClCompile Include="OrcaClient.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />

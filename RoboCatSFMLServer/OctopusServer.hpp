@@ -1,13 +1,13 @@
-class EnemyServer : public Enemy
+class OctopusServer : public Octopus
 {
 public:
-	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new EnemyServer()); }
+	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new OctopusServer()); }
 	void HandleDying() override;
 	virtual bool HandleCollisionWithPlayer(Player* inPlayer) override;
 	virtual void Update() override;
 
 protected:
-	EnemyServer();
+	OctopusServer();
 
 private:
 	float mTimeToDie;

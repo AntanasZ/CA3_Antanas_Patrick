@@ -5,6 +5,10 @@ PickupServer::PickupServer()
 {
 	//pickup lives 5.5 seconds...
 	mTimeToDie = Timing::sInstance.GetFrameStartTime() + 5.5f;
+
+	sf::Int8 randomSprite = rand() % 6 + 1;
+
+	SetSpriteNumber(randomSprite);
 }
 
 void PickupServer::HandleDying()
@@ -17,7 +21,7 @@ bool PickupServer::HandleCollisionWithPlayer(Player* inPlayer)
 	//kill yourself!
 	SetDoesWantToDie(true);
 
-	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 1);
+	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 5);
 
 	//Make the shark grow 1% bigger
 	inPlayer->SetScale(inPlayer->GetScale() * 1.01f);

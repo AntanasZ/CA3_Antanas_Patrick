@@ -12,6 +12,10 @@ public:
 	virtual ~GameObject() {}
 
 	virtual Player* GetAsPlayer() { return nullptr; }
+	virtual Pickup* GetAsPickup() { return nullptr; }
+	virtual Orca* GetAsOrca() { return nullptr; }
+	virtual Diver* GetAsDiver() { return nullptr; }
+	virtual Octopus* GetAsOctopus() { return nullptr; }
 
 	virtual uint32_t GetAllStateMask() const { return 0; }
 

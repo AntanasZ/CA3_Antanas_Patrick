@@ -3,6 +3,6 @@
 PlatformClient::PlatformClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("platform"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("platform"), false);
 }
 

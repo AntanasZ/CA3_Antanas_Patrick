@@ -4,7 +4,7 @@
 ProjectileClient::ProjectileClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("mine"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("mine"), false);
 }
 
 
@@ -25,9 +25,13 @@ void ProjectileClient::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(velocity.mY);
 		SetVelocity(velocity);
 
-		float rotation;
+		/*float rotation;
 		inInputStream.Read(rotation);
-		SetRotation(rotation);
+		SetRotation(rotation);*/
+
+		float scale;
+		inInputStream.Read(scale);
+		SetRotation(scale);
 	}
 
 

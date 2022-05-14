@@ -4,6 +4,6 @@ BoatClient::BoatClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("boat"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("boat"), false);
 }
 

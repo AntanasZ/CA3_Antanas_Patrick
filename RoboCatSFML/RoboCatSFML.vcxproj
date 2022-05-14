@@ -155,7 +155,9 @@
     <ClInclude Include="Boat.hpp" />
     <ClInclude Include="ByteSwap.hpp" />
     <ClInclude Include="DeliveryNotificationManager.hpp" />
-    <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="Diver.hpp" />
+    <ClInclude Include="Octopus.hpp" />
+    <ClInclude Include="Orca.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameObjectRegistry.hpp" />
@@ -192,7 +194,9 @@
     <ClCompile Include="AckRange.cpp" />
     <ClCompile Include="Boat.cpp" />
     <ClCompile Include="DeliveryNotificationManager.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Diver.cpp" />
+    <ClCompile Include="Octopus.cpp" />
+    <ClCompile Include="Orca.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectRegistry.cpp" />

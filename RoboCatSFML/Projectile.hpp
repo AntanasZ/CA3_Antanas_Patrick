@@ -27,6 +27,7 @@ public:
 
 	void		InitFromShooter(Player* inShooter);
 	void		InitFromBoat(Boat* inBoat);
+	void		InitFromDiver(Diver* indiver);
 
 	virtual void Update() override;
 

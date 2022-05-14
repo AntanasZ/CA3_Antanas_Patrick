@@ -1,20 +1,23 @@
 #include "RoboCatPCH.hpp"
 
-Pickup::Pickup() 
+Octopus::Octopus()
 {
 	SetScale(GetScale() * 0.5f);
 	SetCollisionRadius(30.f);
+
+	//Add initial velocity to enemy
+	SetVelocity(Vector3(210.f, 0.f, 0));
 }
 
 
-bool Pickup::HandleCollisionWithPlayer(Player* inPlayer)
+bool Octopus::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	(void)inPlayer;
 	return false;
 }
 
 
-uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Octopus::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
@@ -33,8 +36,6 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 		inOutputStream.Write(GetScale());
 
 		inOutputStream.Write(IsFacingRight());
-		
-		inOutputStream.Write(GetSpriteNumber());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -60,7 +61,7 @@ uint32_t Pickup::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 	return writtenState;
 }
 
-void Pickup::Read(InputMemoryBitStream& inInputStream)
+void Octopus::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 
@@ -84,10 +85,6 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 		bool facingRight;
 		inInputStream.Read(facingRight);
 		SetFacingRight(facingRight);
-
-		sf::Int8 spriteNumber;
-		inInputStream.Read(spriteNumber);
-		SetSpriteNumber(spriteNumber);
 	}
 
 
@@ -100,10 +97,8 @@ void Pickup::Read(InputMemoryBitStream& inInputStream)
 	}
 }
 
-void Pickup::Update()
+void Octopus::Update()
 {
 	float deltaTime = Timing::sInstance.GetDeltaTime();
 	SetLocation(GetLocation() + mVelocity * deltaTime);
 }
-
-
