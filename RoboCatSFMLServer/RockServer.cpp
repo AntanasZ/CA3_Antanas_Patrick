@@ -18,6 +18,9 @@ bool RockServer::HandleCollisionWithPlayer(Player* inPlayer)
 	{
 		inPlayer->SetInvulnerable(true);
 		static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId(), 4);
+
+		//Play a sound
+		inPlayer->PlayHitSound();
 	}
 	//kill yourself!
 	//SetDoesWantToDie(true);

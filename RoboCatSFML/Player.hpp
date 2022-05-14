@@ -40,6 +40,9 @@ public:
 	void SetInvulnerable(bool value);
 	bool GetInvulnerable();
 
+	void PlayCollectPickupSound();
+	void PlayHitSound();
+
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 
 protected:
@@ -76,6 +79,12 @@ protected:
 	bool				mIsShooting;
 	bool mIsInvulnerable;
 	float mInvulnerabilityCountdown;
+	
+	sf::Sound mCollectPickupSound;
+	sf::SoundBuffer mCollectPickupSoundBuffer;
+
+	sf::Sound mHitSound;
+	sf::SoundBuffer mHitSoundBuffer;
 };
 
 typedef shared_ptr< Player >	PlayerPtr;

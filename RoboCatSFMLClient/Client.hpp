@@ -13,5 +13,5 @@ protected:
 	virtual bool	PollEvent(sf::Event& p_event) override;
 
 private:
-
+	sf::Music mBackgroundMusic;
 };
