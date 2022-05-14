@@ -35,6 +35,9 @@ bool ProjectileServer::HandleCollisionWithPlayer(Player* inPlayer)
 		{
 			inPlayer->SetInvulnerable(true);
 			static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId(), 1);
+
+			//Play a sound
+			inPlayer->PlayHitSound();
 		}
 
 	}

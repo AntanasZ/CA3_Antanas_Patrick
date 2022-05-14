@@ -20,6 +20,14 @@ Player::Player() :
 	mIsInvulnerable(false)
 {
 	SetCollisionRadius(48.f);
+
+	mCollectPickupSoundBuffer.loadFromFile("../Assets/Sounds/CollectPickup.wav");
+	mCollectPickupSound.setBuffer(mCollectPickupSoundBuffer);
+	mCollectPickupSound.setVolume(55.f);
+
+	mHitSoundBuffer.loadFromFile("../Assets/Sounds/Hit.wav");
+	mHitSound.setBuffer(mHitSoundBuffer);
+	mHitSound.setVolume(15.f);
 }
 
 void Player::ProcessInput(float inDeltaTime, const InputState& inInputState)
@@ -295,4 +303,14 @@ uint32_t Player::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 	return writtenState;
 
 
+}
+
+void Player::PlayCollectPickupSound()
+{
+	mCollectPickupSound.play();
+}
+
+void Player::PlayHitSound()
+{
+	mHitSound.play();
 }

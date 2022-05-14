@@ -39,6 +39,12 @@ Client::Client()
 	NetworkManagerClient::StaticInit(*serverAddress, name);
 
 	//NetworkManagerClient::sInstance->SetSimulatedLatency(0.0f);
+
+	mBackgroundMusic.openFromFile("../Assets/Music/GameTheme.wav");
+	
+	mBackgroundMusic.play();
+	
+	mBackgroundMusic.setLoop(true);
 }
 
 

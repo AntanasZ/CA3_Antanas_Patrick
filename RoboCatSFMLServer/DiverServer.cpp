@@ -19,16 +19,13 @@ bool DiverServer::HandleCollisionWithPlayer(Player* inPlayer)
 {
 	//kill yourself!
 	SetDoesWantToDie(true);
-	
-	/*if(!inPlayer->GetInvulnerable())
-	{
-		inPlayer->SetInvulnerable(true);
-		static_cast<PlayerServer*>(inPlayer)->TakeDamage(inPlayer->GetPlayerId(), 1);
-	}*/
-	
+
 	//Make the shark grow 3% bigger
 	inPlayer->SetScale(inPlayer->GetScale() * 1.03f);
 	inPlayer->SetCollisionRadius(inPlayer->GetCollisionRadius() * 1.03f);
+
+	//Play a sound
+	inPlayer->PlayCollectPickupSound();
 
 	return false;
 }
@@ -43,8 +40,6 @@ void DiverServer::HandleShooting()
 
 		//fire!
 		ProjectilePtr projectile = std::static_pointer_cast<Projectile>(GameObjectRegistry::sInstance->CreateGameObject('PROJ'));
-		//projectile->SetScale(GetScale() * 0.5f);
-		//projectile->SetCollisionRadius(10.f);
 		projectile->InitFromDiver(this);
 	}
 }
