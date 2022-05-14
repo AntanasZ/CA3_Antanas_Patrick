@@ -37,7 +37,7 @@ uint32_t Enemy::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 
 		inOutputStream.Write(IsFacingRight());
 
-		inOutputStream.Write(GetSpriteNumber);
+		inOutputStream.Write(GetSpriteNumber());
 
 		writtenState |= EMRS_Pose;
 	}
@@ -90,7 +90,7 @@ void Enemy::Read(InputMemoryBitStream& inInputStream)
 
 		sf::Int8 spriteNumber;
 		inInputStream.Read(spriteNumber);
-		SetFacingRight(spriteNumber);
+		SetSpriteNumber(spriteNumber);
 	}
 
 

@@ -5,7 +5,7 @@ PlayerClient::PlayerClient() :
 	mTimeVelocityBecameOutOfSync(0.f)
 {
 	mSpriteComponent.reset(new PlayerSpriteComponent(this));
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("shark"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("shark"), false);
 }
 
 void PlayerClient::HandleDying()

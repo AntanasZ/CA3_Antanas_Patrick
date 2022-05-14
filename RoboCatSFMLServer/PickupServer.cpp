@@ -8,7 +8,7 @@ PickupServer::PickupServer()
 
 	sf::Int8 randomSprite = rand() % 6 + 1;
 
-	this->SetSpriteNumber(randomSprite);
+	SetSpriteNumber(randomSprite);
 }
 
 void PickupServer::HandleDying()

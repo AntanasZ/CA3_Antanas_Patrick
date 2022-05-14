@@ -4,6 +4,6 @@ EnemyClient::EnemyClient()
 {
 	mSpriteComponent.reset(new SpriteComponent(this));
 
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("orca"));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("orca"), false);
 }
 

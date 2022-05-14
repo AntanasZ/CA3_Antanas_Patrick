@@ -13,6 +13,8 @@ public:
 
 	static	GameObject* StaticCreate() { return new Enemy(); }
 
+	virtual	Enemy* GetAsEnemy() override { return this; }
+
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;

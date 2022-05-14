@@ -47,6 +47,8 @@ using std::string;
 using std::unordered_set;
 
 class Player;
+class Enemy;
+class Pickup;
 class Boat;
 class GameObject;
 

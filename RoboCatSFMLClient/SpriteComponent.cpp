@@ -14,12 +14,16 @@ SpriteComponent::~SpriteComponent()
 	RenderManager::sInstance->RemoveComponent(this);
 }
 
-void SpriteComponent::SetTexture(TexturePtr inTexture)
+void SpriteComponent::SetTexture(TexturePtr inTexture, bool resetting)
 {
 	auto tSize = inTexture->getSize();
 	m_sprite.setTexture(*inTexture);
 	m_sprite.setOrigin(tSize.x / 2, tSize.y / 2);
-	m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
+
+	if (!resetting)
+	{
+		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
+	}
 }
 
 void SpriteComponent::UpdateTexture()
@@ -27,27 +31,29 @@ void SpriteComponent::UpdateTexture()
 	Pickup* pickup = mGameObject->GetAsPickup();
 	Enemy* enemy = mGameObject->GetAsEnemy();
 
+	mHasResetSprite = true;
+
 	if (pickup)
 	{
 		switch (pickup->GetSpriteNumber())
 		{
 		case 1:
-			SetTexture(TextureManager::sInstance->GetTexture("fish1"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish1"), true);
 			break;
 		case 2:
-			SetTexture(TextureManager::sInstance->GetTexture("fish2"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish2"), true);
 			break;
 		case 3:
-			SetTexture(TextureManager::sInstance->GetTexture("fish3"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish3"), true);
 			break;
 		case 4:
-			SetTexture(TextureManager::sInstance->GetTexture("fish4"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish4"), true);
 			break;
 		case 5:
-			SetTexture(TextureManager::sInstance->GetTexture("fish5"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish5"), true);
 			break;
 		case 6:
-			SetTexture(TextureManager::sInstance->GetTexture("fish6"));
+			SetTexture(TextureManager::sInstance->GetTexture("fish6"), true);
 			break;
 		}
 	}
@@ -56,13 +62,13 @@ void SpriteComponent::UpdateTexture()
 		switch (enemy->GetSpriteNumber())
 		{
 		case 1:
-			SetTexture(TextureManager::sInstance->GetTexture("orca"));
+			SetTexture(TextureManager::sInstance->GetTexture("orca"), true);
 			break;
 		case 2:
-			SetTexture(TextureManager::sInstance->GetTexture("octopus"));
+			SetTexture(TextureManager::sInstance->GetTexture("octopus"), true);
 			break;
 		case 3:
-			SetTexture(TextureManager::sInstance->GetTexture("diver"));
+			SetTexture(TextureManager::sInstance->GetTexture("diver"), true);
 			break;
 		}
 	}
@@ -85,6 +91,11 @@ sf::Sprite& SpriteComponent::GetSprite()
 	else if (mGameObject->IsFacingRight())
 	{
 		m_sprite.setScale(sf::Vector2f(1.f * mGameObject->GetScale(), 1.f * mGameObject->GetScale()));
+	}
+
+	if (!mHasResetSprite)
+	{
+		UpdateTexture();
 	}
 
 	return m_sprite;

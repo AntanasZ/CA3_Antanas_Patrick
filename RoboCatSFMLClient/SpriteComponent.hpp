@@ -8,8 +8,7 @@ public:
 	SpriteComponent(GameObject* inGameObject);
 	~SpriteComponent();
 
-
-	void SetTexture(TexturePtr inTexture);
+	void SetTexture(TexturePtr inTexture, bool resetting);
 	virtual sf::Sprite& GetSprite();
 	GameObject* GetGameObject() { return mGameObject; }
 	void UpdateTexture();
@@ -21,6 +20,7 @@ protected:
 
 	//don't want circular reference...
 	GameObject* mGameObject;
+	bool mHasResetSprite = false;
 };
 
 typedef shared_ptr< SpriteComponent >	SpriteComponentPtr;

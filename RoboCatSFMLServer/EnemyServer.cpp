@@ -8,7 +8,7 @@ EnemyServer::EnemyServer()
 
 	sf::Int8 randomSprite = rand() % 3 + 1;
 
-	this->SetSpriteNumber(randomSprite);
+	SetSpriteNumber(randomSprite);
 }
 
 void EnemyServer::HandleDying()
