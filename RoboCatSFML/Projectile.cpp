@@ -9,8 +9,6 @@ Projectile::Projectile() :
 	SetCollisionRadius(20.f);
 }
 
-
-
 uint32_t Projectile::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
@@ -27,7 +25,9 @@ uint32_t Projectile::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDir
 		inOutputStream.Write(velocity.mX);
 		inOutputStream.Write(velocity.mY);
 
-		inOutputStream.Write(GetRotation());
+		//inOutputStream.Write(GetRotation());
+
+		inOutputStream.Write(GetScale());
 
 		writtenState |= EYRS_Pose;
 	}
@@ -91,8 +91,24 @@ void Projectile::InitFromBoat(Boat* inBoat)
 {
 	SetVelocity(Vector3(0, 300.f, 0));
 	SetLocation(inBoat->GetLocation() /* + forward * 0.55f */);
+}
 
-	//SetRotation(inShooter->GetRotation());
+void Projectile::InitFromDiver(Diver* inDiver)
+{
+	Vector3 forward = inDiver->GetForwardVector();
+
+	if (inDiver->GetVelocity().mX > 0)
+	{
+		SetVelocity(Vector3(inDiver->GetVelocity().mX + 80.f, 0.f, 0.f));
+		SetLocation(Vector3(inDiver->GetLocation().mX + 20.f,
+			inDiver->GetLocation().mY, inDiver->GetLocation().mZ));
+	}
+	else
+	{
+		SetVelocity(Vector3(inDiver->GetVelocity().mX - 80.f, 0.f, 0.f));
+		SetLocation(Vector3(inDiver->GetLocation().mX -20.f, 
+			inDiver->GetLocation().mY, inDiver->GetLocation().mZ));
+	}
 }
 
 void Projectile::Update()

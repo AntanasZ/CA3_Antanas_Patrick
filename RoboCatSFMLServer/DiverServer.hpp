@@ -11,4 +11,9 @@ protected:
 
 private:
 	float mTimeToDie;
+
+	void HandleShooting();
+
+	float		mTimeOfNextShot;
+	float		mTimeBetweenShots;
 };

@@ -21,7 +21,7 @@ bool PickupServer::HandleCollisionWithPlayer(Player* inPlayer)
 	//kill yourself!
 	SetDoesWantToDie(true);
 
-	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 1);
+	ScoreBoardManager::sInstance->IncScore(inPlayer->GetPlayerId(), 5);
 
 	return false;
 }

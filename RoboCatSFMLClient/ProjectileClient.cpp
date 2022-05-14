@@ -25,9 +25,13 @@ void ProjectileClient::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(velocity.mY);
 		SetVelocity(velocity);
 
-		float rotation;
+		/*float rotation;
 		inInputStream.Read(rotation);
-		SetRotation(rotation);
+		SetRotation(rotation);*/
+
+		float scale;
+		inInputStream.Read(scale);
+		SetRotation(scale);
 	}
 
 
