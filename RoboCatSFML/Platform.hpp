@@ -1,3 +1,10 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
 class Platform : public GameObject
 {
 public:
@@ -12,7 +19,8 @@ public:
 	};
 
 	static GameObject* StaticCreate() { return new Platform(); }
-	virtual bool HandleCollisionWithPlayer(Player* inPlayer) override;
+	virtual bool HandleCollisionWithPlayer(Player* inPlayer
+) override;
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 

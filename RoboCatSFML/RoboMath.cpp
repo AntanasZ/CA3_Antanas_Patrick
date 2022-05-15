@@ -1,3 +1,11 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
+
 //
 //  RoboMath.cpp
 //  RoboCat
@@ -5,7 +13,6 @@
 //  Created by Joshua Glazer on 6/13/15.
 //  Copyright (c) 2015 com.JoshuaGlazer.Book. All rights reserved.
 //
-
 #include "RoboCatPCH.hpp"
 
 #include <random>

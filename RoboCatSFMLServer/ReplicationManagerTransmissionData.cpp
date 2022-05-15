@@ -1,3 +1,10 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
 #include "RoboCatServerPCH.hpp"
 
 void ReplicationManagerTransmissionData::AddTransmission(int inNetworkId, ReplicationAction inAction, uint32_t inState)

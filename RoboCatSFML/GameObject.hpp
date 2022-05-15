@@ -1,3 +1,10 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
 #define CLASS_IDENTIFICATION(in_code, in_class) \
 enum {kClassId = in_code}; \
 virtual uint32_t GetClassId() const {return kClassId;} \

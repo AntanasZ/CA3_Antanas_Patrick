@@ -1,3 +1,10 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
 class DeliveryNotificationManager;
 
 //in case we decide to change the type of the sequence number to use fewer or more bits

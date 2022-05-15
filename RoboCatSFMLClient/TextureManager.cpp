@@ -1,3 +1,10 @@
+/// <summary>
+/// Name: Patrick Nugent
+/// Student Number: D00218208
+///
+/// Name: Antanas Zalisauskas
+/// Student Number: D00218148
+/// </summary>
 #include "RoboCatClientPCH.hpp"
 
 std::unique_ptr< TextureManager >		TextureManager::sInstance;
@@ -9,14 +16,8 @@ void TextureManager::StaticInit()
 
 TextureManager::TextureManager()
 {
-	CacheTexture("cat", "../Assets/cat.png");
-	CacheTexture("mouse", "../Assets/mouse.png");
-	CacheTexture("tomato", "../Assets/Tomato.png");
-	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("background", "../Assets/Background.png");
-	CacheTexture("platform", "../Assets/Platform.png");
 	CacheTexture("rock", "../Assets/Rock.png");
-	CacheTexture("groundPlatform", "../Assets/GroundPlatform.png");
 	CacheTexture("fish1", "../Assets/Fish1.png");
 	CacheTexture("fish2", "../Assets/Fish2.png");
 	CacheTexture("fish3", "../Assets/Fish3.png");
